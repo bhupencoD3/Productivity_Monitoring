@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  milvus:
+    image: milvusdb/milvus:latest
+    container_name: milvus_standalone
+    environment:
+      - MILVUS_DB_PATH=/var/lib/milvus/db
+      - MILVUS_LOG_PATH=/var/lib/milvus/logs
+      - MILVUS_CONFIG_PATH=/milvus/configs
+    ports:
+      - "19530:19530"
+      - "19121:19121"
+    volumes:
+      - milvus_db:/var/lib/milvus/db
+      - milvus_logs:/var/lib/milvus/logs
+
+volumes:
+  milvus_db:
+  milvus_logs:

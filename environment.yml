@@ -1,0 +1,13 @@
+name: rec_dec
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - opencv
+  - numpy
+  - pip
+  - pip:
+      - mediapipe
+      - facenet-pytorch
+      - torch
+      - torchvision
