@@ -1,0 +1,7 @@
+prefix=/home/bhupen/Downloads/Productivity_Managment/bhupen-1-Productivity-Monitoring/rune
+datarootdir=${prefix}/share
+pkgdatadir=${pc_sysrootdir}${datarootdir}/wayland-protocols
+
+Name: Wayland Protocols
+Description: Wayland protocol files
+Version: 1.37

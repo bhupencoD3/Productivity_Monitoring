@@ -1,0 +1,31 @@
+{
+  "build": "5_cp311",
+  "build_number": 5,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [
+    "python 3.11.* *_cpython"
+  ],
+  "depends": [],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/python_abi-3.11-5_cp311",
+  "files": [],
+  "fn": "python_abi-3.11-5_cp311.conda",
+  "license": "BSD-3-Clause",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/python_abi-3.11-5_cp311",
+    "type": 1
+  },
+  "md5": "139a8d40c8a2f430df31048949e450de",
+  "name": "python_abi",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/python_abi-3.11-5_cp311.conda",
+  "paths_data": {
+    "paths": [],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "2660b8059b3ee854bc5d3c6b1fce946e5bd2fe8fbca7827de2c5885ead6209de",
+  "size": 6211,
+  "subdir": "linux-64",
+  "timestamp": 1723823324000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/python_abi-3.11-5_cp311.conda",
+  "version": "3.11"
+}

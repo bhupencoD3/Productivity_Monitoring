@@ -1,0 +1,54 @@
+{
+  "build": "h6363af5_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "libabseil * cxx17*",
+    "libabseil >=20240722.0,<20240723.0a0",
+    "libprotobuf >=5.28.3,<5.28.4.0a0",
+    "libopenvino 2024.6.0 hac27bb2_3"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libopenvino-paddle-frontend-2024.6.0-h6363af5_3",
+  "files": [
+    "lib/libopenvino_paddle_frontend.so.2024.6.0",
+    "lib/libopenvino_paddle_frontend.so.2460"
+  ],
+  "fn": "libopenvino-paddle-frontend-2024.6.0-h6363af5_3.conda",
+  "license": "",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libopenvino-paddle-frontend-2024.6.0-h6363af5_3",
+    "type": 1
+  },
+  "md5": "cf097d1aa9f828ac24d9ec686411f459",
+  "name": "libopenvino-paddle-frontend",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libopenvino-paddle-frontend-2024.6.0-h6363af5_3.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libopenvino_paddle_frontend.so.2024.6.0",
+        "path_type": "hardlink",
+        "sha256": "6366059ae9a9fd9fb17555b9f0995018d72bff21583c21ad383bb0bf3cda7e9f",
+        "sha256_in_prefix": "6366059ae9a9fd9fb17555b9f0995018d72bff21583c21ad383bb0bf3cda7e9f",
+        "size_in_bytes": 2225456
+      },
+      {
+        "_path": "lib/libopenvino_paddle_frontend.so.2460",
+        "path_type": "softlink",
+        "sha256": "6366059ae9a9fd9fb17555b9f0995018d72bff21583c21ad383bb0bf3cda7e9f",
+        "size_in_bytes": 2225456
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "576fd23a3df95a54cc59c7e74496d02ae2d2cefc61d3495e98f1e70968fe41f7",
+  "size": 660629,
+  "subdir": "linux-64",
+  "timestamp": 1735814420000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenvino-paddle-frontend-2024.6.0-h6363af5_3.conda",
+  "version": "2024.6.0"
+}

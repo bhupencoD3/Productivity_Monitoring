@@ -1,0 +1,45 @@
+{
+  "build": "h3f63f65_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "pugixml >=1.14,<1.15.0a0",
+    "libopenvino 2024.6.0 hac27bb2_3"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libopenvino-hetero-plugin-2024.6.0-h3f63f65_3",
+  "files": [
+    "lib/openvino-2024.6.0/libopenvino_hetero_plugin.so"
+  ],
+  "fn": "libopenvino-hetero-plugin-2024.6.0-h3f63f65_3.conda",
+  "license": "",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libopenvino-hetero-plugin-2024.6.0-h3f63f65_3",
+    "type": 1
+  },
+  "md5": "0027d0eb0b43817adf23778721fc2156",
+  "name": "libopenvino-hetero-plugin",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libopenvino-hetero-plugin-2024.6.0-h3f63f65_3.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/openvino-2024.6.0/libopenvino_hetero_plugin.so",
+        "path_type": "hardlink",
+        "sha256": "5fabf946fb5d2f1d6a43be1ecc535d4232994beda643c037d674878aa11fbfbc",
+        "sha256_in_prefix": "5fabf946fb5d2f1d6a43be1ecc535d4232994beda643c037d674878aa11fbfbc",
+        "size_in_bytes": 510136
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "4e9e37541e03e271f58810dde57903bc913821925bbcc718769da59fa27e3e0f",
+  "size": 201005,
+  "subdir": "linux-64",
+  "timestamp": 1735814274000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenvino-hetero-plugin-2024.6.0-h3f63f65_3.conda",
+  "version": "2024.6.0"
+}

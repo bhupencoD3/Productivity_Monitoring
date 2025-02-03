@@ -1,0 +1,340 @@
+{
+  "build": "h536e39c_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "libgcc-ng >=12",
+    "libjpeg-turbo >=3.0.0,<4.0a0",
+    "libglu >=9.0.0,<10.0a0",
+    "freeglut >=3.2.2,<4.0a0"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/jasper-4.2.4-h536e39c_0",
+  "files": [
+    "bin/imgcmp",
+    "bin/imginfo",
+    "bin/jasper",
+    "bin/jiv",
+    "include/jasper/jas_cm.h",
+    "include/jasper/jas_compiler.h",
+    "include/jasper/jas_config.h",
+    "include/jasper/jas_debug.h",
+    "include/jasper/jas_dll.h",
+    "include/jasper/jas_export_cmake.h",
+    "include/jasper/jas_fix.h",
+    "include/jasper/jas_getopt.h",
+    "include/jasper/jas_icc.h",
+    "include/jasper/jas_image.h",
+    "include/jasper/jas_init.h",
+    "include/jasper/jas_log.h",
+    "include/jasper/jas_malloc.h",
+    "include/jasper/jas_math.h",
+    "include/jasper/jas_seq.h",
+    "include/jasper/jas_stream.h",
+    "include/jasper/jas_string.h",
+    "include/jasper/jas_thread.h",
+    "include/jasper/jas_tmr.h",
+    "include/jasper/jas_tvp.h",
+    "include/jasper/jas_types.h",
+    "include/jasper/jas_version.h",
+    "include/jasper/jasper.h",
+    "lib/libjasper.a",
+    "lib/libjasper.so",
+    "lib/libjasper.so.7",
+    "lib/libjasper.so.7.0.0",
+    "lib/pkgconfig/jasper.pc",
+    "share/doc/JasPer/README.md",
+    "share/doc/JasPer/jpeg2000.pdf",
+    "share/man/man1/imgcmp.1",
+    "share/man/man1/imginfo.1",
+    "share/man/man1/jasper.1",
+    "share/man/man1/jiv.1"
+  ],
+  "fn": "jasper-4.2.4-h536e39c_0.conda",
+  "license": "JasPer-2.0",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/jasper-4.2.4-h536e39c_0",
+    "type": 1
+  },
+  "md5": "9518ab7016cf4564778aef08b6bd8792",
+  "name": "jasper",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/jasper-4.2.4-h536e39c_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "bin/imgcmp",
+        "path_type": "hardlink",
+        "sha256": "0c41025cebdd8c8c1d7491b311cd247807ac2dd2e592da893b4d14925e3306be",
+        "sha256_in_prefix": "0c41025cebdd8c8c1d7491b311cd247807ac2dd2e592da893b4d14925e3306be",
+        "size_in_bytes": 385968
+      },
+      {
+        "_path": "bin/imginfo",
+        "path_type": "hardlink",
+        "sha256": "6266e13670e481b2064f50f92db0322917b35616735d15786672ec287b71406b",
+        "sha256_in_prefix": "6266e13670e481b2064f50f92db0322917b35616735d15786672ec287b71406b",
+        "size_in_bytes": 385672
+      },
+      {
+        "_path": "bin/jasper",
+        "path_type": "hardlink",
+        "sha256": "85041e8149a2f368905f41e1c85788864944fcd084cb88efb695dc5a1875334a",
+        "sha256_in_prefix": "85041e8149a2f368905f41e1c85788864944fcd084cb88efb695dc5a1875334a",
+        "size_in_bytes": 395184
+      },
+      {
+        "_path": "bin/jiv",
+        "path_type": "hardlink",
+        "sha256": "323e159483115f9e77cd582068307560537c1a5e614e4e0e0e498f71e97035cf",
+        "sha256_in_prefix": "323e159483115f9e77cd582068307560537c1a5e614e4e0e0e498f71e97035cf",
+        "size_in_bytes": 408440
+      },
+      {
+        "_path": "include/jasper/jas_cm.h",
+        "path_type": "hardlink",
+        "sha256": "d87dd5d36b3191cd2070911390c191787d09500654c3103de0a342f7d0c2fdf8",
+        "sha256_in_prefix": "d87dd5d36b3191cd2070911390c191787d09500654c3103de0a342f7d0c2fdf8",
+        "size_in_bytes": 11987
+      },
+      {
+        "_path": "include/jasper/jas_compiler.h",
+        "path_type": "hardlink",
+        "sha256": "27a5a43453e9a33b39e8ac006a94bfb2b55abdf1846ff1f0a46587f5947b753a",
+        "sha256_in_prefix": "27a5a43453e9a33b39e8ac006a94bfb2b55abdf1846ff1f0a46587f5947b753a",
+        "size_in_bytes": 4858
+      },
+      {
+        "_path": "include/jasper/jas_config.h",
+        "path_type": "hardlink",
+        "sha256": "5e25173b0ab9ad520e1cbf5ccbbecd60fa57811066a7d2b2f4995de47b2a5461",
+        "sha256_in_prefix": "5e25173b0ab9ad520e1cbf5ccbbecd60fa57811066a7d2b2f4995de47b2a5461",
+        "size_in_bytes": 2699
+      },
+      {
+        "_path": "include/jasper/jas_debug.h",
+        "path_type": "hardlink",
+        "sha256": "c7fa47aebd47265bf533d29282291e9581ebf1154b0e2f4ae5f0c9357f0776d0",
+        "sha256_in_prefix": "c7fa47aebd47265bf533d29282291e9581ebf1154b0e2f4ae5f0c9357f0776d0",
+        "size_in_bytes": 5671
+      },
+      {
+        "_path": "include/jasper/jas_dll.h",
+        "path_type": "hardlink",
+        "sha256": "7990fbf127b2839f1c235ec69452744c9ab898b1322f3b5b37d80e2236c5da86",
+        "sha256_in_prefix": "7990fbf127b2839f1c235ec69452744c9ab898b1322f3b5b37d80e2236c5da86",
+        "size_in_bytes": 3345
+      },
+      {
+        "_path": "include/jasper/jas_export_cmake.h",
+        "path_type": "hardlink",
+        "sha256": "02ceb36ceb34579063aa7bd7828f751c970cd8c8625cfee9af2201992a13ff38",
+        "sha256_in_prefix": "02ceb36ceb34579063aa7bd7828f751c970cd8c8625cfee9af2201992a13ff38",
+        "size_in_bytes": 896
+      },
+      {
+        "_path": "include/jasper/jas_fix.h",
+        "path_type": "hardlink",
+        "sha256": "d26c39ba2ff7a8f91dd2494253068e8b82838743d307113b4e5de5d93af3033a",
+        "sha256_in_prefix": "d26c39ba2ff7a8f91dd2494253068e8b82838743d307113b4e5de5d93af3033a",
+        "size_in_bytes": 14306
+      },
+      {
+        "_path": "include/jasper/jas_getopt.h",
+        "path_type": "hardlink",
+        "sha256": "1950fa84b048b3759d39af28abe4348c2cb23bc0fef043dc666efd4bc100bd7a",
+        "sha256_in_prefix": "1950fa84b048b3759d39af28abe4348c2cb23bc0fef043dc666efd4bc100bd7a",
+        "size_in_bytes": 5090
+      },
+      {
+        "_path": "include/jasper/jas_icc.h",
+        "path_type": "hardlink",
+        "sha256": "37f25623e54e91348d80d16b18d764fe74f5bbb16801c34ce0a1fc842f121b6c",
+        "sha256_in_prefix": "37f25623e54e91348d80d16b18d764fe74f5bbb16801c34ce0a1fc842f121b6c",
+        "size_in_bytes": 16847
+      },
+      {
+        "_path": "include/jasper/jas_image.h",
+        "path_type": "hardlink",
+        "sha256": "8f0e2f8fe25cca03e2c75025008748bc9bbf953ccb6a67b482323ccb0856a82c",
+        "sha256_in_prefix": "8f0e2f8fe25cca03e2c75025008748bc9bbf953ccb6a67b482323ccb0856a82c",
+        "size_in_bytes": 23744
+      },
+      {
+        "_path": "include/jasper/jas_init.h",
+        "path_type": "hardlink",
+        "sha256": "ca0efb0914102079373934ac342c652fa39e140e355625a3f26382ede85d0c72",
+        "sha256_in_prefix": "ca0efb0914102079373934ac342c652fa39e140e355625a3f26382ede85d0c72",
+        "size_in_bytes": 12735
+      },
+      {
+        "_path": "include/jasper/jas_log.h",
+        "path_type": "hardlink",
+        "sha256": "914f6a8a7404df6a6bbf2da5956fd211c99cc897ffef19f69f5c149c6b2cf899",
+        "sha256_in_prefix": "914f6a8a7404df6a6bbf2da5956fd211c99cc897ffef19f69f5c149c6b2cf899",
+        "size_in_bytes": 5501
+      },
+      {
+        "_path": "include/jasper/jas_malloc.h",
+        "path_type": "hardlink",
+        "sha256": "95ae9e2c2811f33f2a441eb811154670084432c5bc29fbd15237497e36aef416",
+        "sha256_in_prefix": "95ae9e2c2811f33f2a441eb811154670084432c5bc29fbd15237497e36aef416",
+        "size_in_bytes": 10471
+      },
+      {
+        "_path": "include/jasper/jas_math.h",
+        "path_type": "hardlink",
+        "sha256": "0d4bb6082fbda7e5f28f69c073877b86b650eb7c0d7996868d5d62f1a453cc4f",
+        "sha256_in_prefix": "0d4bb6082fbda7e5f28f69c073877b86b650eb7c0d7996868d5d62f1a453cc4f",
+        "size_in_bytes": 20182
+      },
+      {
+        "_path": "include/jasper/jas_seq.h",
+        "path_type": "hardlink",
+        "sha256": "61a380bcde40a9853b6403941baf08c6cee3fbf51db0b5c4f6f50a2894a10221",
+        "sha256_in_prefix": "61a380bcde40a9853b6403941baf08c6cee3fbf51db0b5c4f6f50a2894a10221",
+        "size_in_bytes": 15757
+      },
+      {
+        "_path": "include/jasper/jas_stream.h",
+        "path_type": "hardlink",
+        "sha256": "1b181d348484c0bb17bf0e7e434c4e6b4650c82a1dd42f754b07485db654248d",
+        "sha256_in_prefix": "1b181d348484c0bb17bf0e7e434c4e6b4650c82a1dd42f754b07485db654248d",
+        "size_in_bytes": 31478
+      },
+      {
+        "_path": "include/jasper/jas_string.h",
+        "path_type": "hardlink",
+        "sha256": "3260da1ecb83b200339a571a38117bf6b3d6ffb7456708b753a6d606dba1d4fc",
+        "sha256_in_prefix": "3260da1ecb83b200339a571a38117bf6b3d6ffb7456708b753a6d606dba1d4fc",
+        "size_in_bytes": 5005
+      },
+      {
+        "_path": "include/jasper/jas_thread.h",
+        "path_type": "hardlink",
+        "sha256": "47030cf53c90d29b70beabba953effc14615093335b09cd0882704dc9eb93282",
+        "sha256_in_prefix": "47030cf53c90d29b70beabba953effc14615093335b09cd0882704dc9eb93282",
+        "size_in_bytes": 20126
+      },
+      {
+        "_path": "include/jasper/jas_tmr.h",
+        "path_type": "hardlink",
+        "sha256": "8aa2257ed4dc22ad89c0dc6dc983065767d42dca164face3ad16c04c2d608ff0",
+        "sha256_in_prefix": "8aa2257ed4dc22ad89c0dc6dc983065767d42dca164face3ad16c04c2d608ff0",
+        "size_in_bytes": 3995
+      },
+      {
+        "_path": "include/jasper/jas_tvp.h",
+        "path_type": "hardlink",
+        "sha256": "c89225b89f034b23c3c59c2aa99a9474ccd574e1540f370d4954209a84214244",
+        "sha256_in_prefix": "c89225b89f034b23c3c59c2aa99a9474ccd574e1540f370d4954209a84214244",
+        "size_in_bytes": 5739
+      },
+      {
+        "_path": "include/jasper/jas_types.h",
+        "path_type": "hardlink",
+        "sha256": "72361fa9a15d408175444d6905e2a1d0a3bcb3fcd5e9fb8eb8699b48a71768d7",
+        "sha256_in_prefix": "72361fa9a15d408175444d6905e2a1d0a3bcb3fcd5e9fb8eb8699b48a71768d7",
+        "size_in_bytes": 6640
+      },
+      {
+        "_path": "include/jasper/jas_version.h",
+        "path_type": "hardlink",
+        "sha256": "d11a6a49305a1ed4120d540fbebb9f34938ada2fd10a8e2dcd749cf1da1b01ea",
+        "sha256_in_prefix": "d11a6a49305a1ed4120d540fbebb9f34938ada2fd10a8e2dcd749cf1da1b01ea",
+        "size_in_bytes": 4660
+      },
+      {
+        "_path": "include/jasper/jasper.h",
+        "path_type": "hardlink",
+        "sha256": "04f1f68e4050e83475a300dc8d8c68e00d299c055c3feb105880942bd2769af6",
+        "sha256_in_prefix": "04f1f68e4050e83475a300dc8d8c68e00d299c055c3feb105880942bd2769af6",
+        "size_in_bytes": 3936
+      },
+      {
+        "_path": "lib/libjasper.a",
+        "path_type": "hardlink",
+        "sha256": "f331b0d05f826fc265753db462ed0a482da785ebd1709bbe3c9bfd8a47dc6dda",
+        "sha256_in_prefix": "f331b0d05f826fc265753db462ed0a482da785ebd1709bbe3c9bfd8a47dc6dda",
+        "size_in_bytes": 843584
+      },
+      {
+        "_path": "lib/libjasper.so",
+        "path_type": "softlink",
+        "sha256": "c03c64b8a529750a7a5f982e8f5383b091fd8a8bd387ec1edf71c614c2f93d15",
+        "size_in_bytes": 412720
+      },
+      {
+        "_path": "lib/libjasper.so.7",
+        "path_type": "softlink",
+        "sha256": "c03c64b8a529750a7a5f982e8f5383b091fd8a8bd387ec1edf71c614c2f93d15",
+        "size_in_bytes": 412720
+      },
+      {
+        "_path": "lib/libjasper.so.7.0.0",
+        "path_type": "hardlink",
+        "sha256": "c03c64b8a529750a7a5f982e8f5383b091fd8a8bd387ec1edf71c614c2f93d15",
+        "sha256_in_prefix": "c03c64b8a529750a7a5f982e8f5383b091fd8a8bd387ec1edf71c614c2f93d15",
+        "size_in_bytes": 412720
+      },
+      {
+        "_path": "lib/pkgconfig/jasper.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/jasper_1714298466419/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+        "sha256": "356c2b161798fd7c5af2fec0d0d8ea18f2eda87e929bfdd5a50e27857aa18516",
+        "sha256_in_prefix": "ce6f81b81629b241d994329d1f0fc2cc494a09d74771dadb5d47608c8735a8ba",
+        "size_in_bytes": 581
+      },
+      {
+        "_path": "share/doc/JasPer/README.md",
+        "path_type": "hardlink",
+        "sha256": "06ff0471af2430f3025a5fffa0b59b53a1c0c33f3f81c68c3f3e28997e70eb2e",
+        "sha256_in_prefix": "06ff0471af2430f3025a5fffa0b59b53a1c0c33f3f81c68c3f3e28997e70eb2e",
+        "size_in_bytes": 2354
+      },
+      {
+        "_path": "share/doc/JasPer/jpeg2000.pdf",
+        "path_type": "hardlink",
+        "sha256": "3f7731f8a1198b8767e6fb53b822510013814abf7b370ef38fafa5a3b415f9b2",
+        "sha256_in_prefix": "3f7731f8a1198b8767e6fb53b822510013814abf7b370ef38fafa5a3b415f9b2",
+        "size_in_bytes": 298678
+      },
+      {
+        "_path": "share/man/man1/imgcmp.1",
+        "path_type": "hardlink",
+        "sha256": "2d6b42d343c2e5dc077fd70a8cfa692cd3a005e2fc8923ab1731a4d8db82dbab",
+        "sha256_in_prefix": "2d6b42d343c2e5dc077fd70a8cfa692cd3a005e2fc8923ab1731a4d8db82dbab",
+        "size_in_bytes": 926
+      },
+      {
+        "_path": "share/man/man1/imginfo.1",
+        "path_type": "hardlink",
+        "sha256": "dc69cc16409a62d480f693affab52ff2e809393ced0891836fc29887f3c1f5fc",
+        "sha256_in_prefix": "dc69cc16409a62d480f693affab52ff2e809393ced0891836fc29887f3c1f5fc",
+        "size_in_bytes": 894
+      },
+      {
+        "_path": "share/man/man1/jasper.1",
+        "path_type": "hardlink",
+        "sha256": "2aad0da2ced3d8306d22e32ddd8b191230867ca1d96d16062558321a9095d15c",
+        "sha256_in_prefix": "2aad0da2ced3d8306d22e32ddd8b191230867ca1d96d16062558321a9095d15c",
+        "size_in_bytes": 922
+      },
+      {
+        "_path": "share/man/man1/jiv.1",
+        "path_type": "hardlink",
+        "sha256": "07973d3df7bec81cab3a6ad86479a8fd781a67e7b2b1bed368b414bc879cd017",
+        "sha256_in_prefix": "07973d3df7bec81cab3a6ad86479a8fd781a67e7b2b1bed368b414bc879cd017",
+        "size_in_bytes": 961
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "0a5ca92ea0261f435c27a3c3c5c5bc5e8b4b1af1343b21ef0cbc7c33b62f5239",
+  "size": 675951,
+  "subdir": "linux-64",
+  "timestamp": 1714298705000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/jasper-4.2.4-h536e39c_0.conda",
+  "version": "4.2.4"
+}

@@ -1,0 +1,421 @@
+{
+  "build": "hd8ed1ab_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/noarch",
+  "constrains": [],
+  "depends": [
+    "wayland"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/wayland-protocols-1.37-hd8ed1ab_0",
+  "files": [
+    "share/pkgconfig/wayland-protocols.pc",
+    "share/wayland-protocols/stable/linux-dmabuf/linux-dmabuf-v1.xml",
+    "share/wayland-protocols/stable/presentation-time/presentation-time.xml",
+    "share/wayland-protocols/stable/tablet/tablet-v2.xml",
+    "share/wayland-protocols/stable/viewporter/viewporter.xml",
+    "share/wayland-protocols/stable/xdg-shell/xdg-shell.xml",
+    "share/wayland-protocols/staging/alpha-modifier/alpha-modifier-v1.xml",
+    "share/wayland-protocols/staging/content-type/content-type-v1.xml",
+    "share/wayland-protocols/staging/cursor-shape/cursor-shape-v1.xml",
+    "share/wayland-protocols/staging/drm-lease/drm-lease-v1.xml",
+    "share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml",
+    "share/wayland-protocols/staging/ext-idle-notify/ext-idle-notify-v1.xml",
+    "share/wayland-protocols/staging/ext-image-capture-source/ext-image-capture-source-v1.xml",
+    "share/wayland-protocols/staging/ext-image-copy-capture/ext-image-copy-capture-v1.xml",
+    "share/wayland-protocols/staging/ext-session-lock/ext-session-lock-v1.xml",
+    "share/wayland-protocols/staging/ext-transient-seat/ext-transient-seat-v1.xml",
+    "share/wayland-protocols/staging/fractional-scale/fractional-scale-v1.xml",
+    "share/wayland-protocols/staging/linux-drm-syncobj/linux-drm-syncobj-v1.xml",
+    "share/wayland-protocols/staging/security-context/security-context-v1.xml",
+    "share/wayland-protocols/staging/single-pixel-buffer/single-pixel-buffer-v1.xml",
+    "share/wayland-protocols/staging/tearing-control/tearing-control-v1.xml",
+    "share/wayland-protocols/staging/xdg-activation/xdg-activation-v1.xml",
+    "share/wayland-protocols/staging/xdg-dialog/xdg-dialog-v1.xml",
+    "share/wayland-protocols/staging/xdg-toplevel-drag/xdg-toplevel-drag-v1.xml",
+    "share/wayland-protocols/staging/xdg-toplevel-icon/xdg-toplevel-icon-v1.xml",
+    "share/wayland-protocols/staging/xwayland-shell/xwayland-shell-v1.xml",
+    "share/wayland-protocols/unstable/fullscreen-shell/fullscreen-shell-unstable-v1.xml",
+    "share/wayland-protocols/unstable/idle-inhibit/idle-inhibit-unstable-v1.xml",
+    "share/wayland-protocols/unstable/input-method/input-method-unstable-v1.xml",
+    "share/wayland-protocols/unstable/input-timestamps/input-timestamps-unstable-v1.xml",
+    "share/wayland-protocols/unstable/keyboard-shortcuts-inhibit/keyboard-shortcuts-inhibit-unstable-v1.xml",
+    "share/wayland-protocols/unstable/linux-dmabuf/linux-dmabuf-unstable-v1.xml",
+    "share/wayland-protocols/unstable/linux-explicit-synchronization/linux-explicit-synchronization-unstable-v1.xml",
+    "share/wayland-protocols/unstable/pointer-constraints/pointer-constraints-unstable-v1.xml",
+    "share/wayland-protocols/unstable/pointer-gestures/pointer-gestures-unstable-v1.xml",
+    "share/wayland-protocols/unstable/primary-selection/primary-selection-unstable-v1.xml",
+    "share/wayland-protocols/unstable/relative-pointer/relative-pointer-unstable-v1.xml",
+    "share/wayland-protocols/unstable/tablet/tablet-unstable-v1.xml",
+    "share/wayland-protocols/unstable/tablet/tablet-unstable-v2.xml",
+    "share/wayland-protocols/unstable/text-input/text-input-unstable-v1.xml",
+    "share/wayland-protocols/unstable/text-input/text-input-unstable-v3.xml",
+    "share/wayland-protocols/unstable/xdg-decoration/xdg-decoration-unstable-v1.xml",
+    "share/wayland-protocols/unstable/xdg-foreign/xdg-foreign-unstable-v1.xml",
+    "share/wayland-protocols/unstable/xdg-foreign/xdg-foreign-unstable-v2.xml",
+    "share/wayland-protocols/unstable/xdg-output/xdg-output-unstable-v1.xml",
+    "share/wayland-protocols/unstable/xdg-shell/xdg-shell-unstable-v5.xml",
+    "share/wayland-protocols/unstable/xdg-shell/xdg-shell-unstable-v6.xml",
+    "share/wayland-protocols/unstable/xwayland-keyboard-grab/xwayland-keyboard-grab-unstable-v1.xml"
+  ],
+  "fn": "wayland-protocols-1.37-hd8ed1ab_0.conda",
+  "license": "MIT",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/wayland-protocols-1.37-hd8ed1ab_0",
+    "type": 1
+  },
+  "md5": "73ec79a77d31eb7e4a3276cd246b776c",
+  "name": "wayland-protocols",
+  "noarch": "generic",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/wayland-protocols-1.37-hd8ed1ab_0.conda",
+  "package_type": "noarch_generic",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "share/pkgconfig/wayland-protocols.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/wayland-protocols_1725657144265/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_pla",
+        "sha256": "e825ab2aab4862b04c8d2c06d575955cbdbe9f160c132807ee1fb36b4139c52e",
+        "sha256_in_prefix": "537bf5c2d5fc52efa4c9592107d584ea462b892a760dc054135223d497c12551",
+        "size_in_bytes": 426
+      },
+      {
+        "_path": "share/wayland-protocols/stable/linux-dmabuf/linux-dmabuf-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "f605ba427833267ec475a7910fd22982042fc88d0252e6d05ed17c4bb9594b00",
+        "sha256_in_prefix": "f605ba427833267ec475a7910fd22982042fc88d0252e6d05ed17c4bb9594b00",
+        "size_in_bytes": 28544
+      },
+      {
+        "_path": "share/wayland-protocols/stable/presentation-time/presentation-time.xml",
+        "path_type": "hardlink",
+        "sha256": "91e5e14481a13717fef8403203a2eaa052c85fd853c1c440ba081effa7178d12",
+        "sha256_in_prefix": "91e5e14481a13717fef8403203a2eaa052c85fd853c1c440ba081effa7178d12",
+        "size_in_bytes": 12642
+      },
+      {
+        "_path": "share/wayland-protocols/stable/tablet/tablet-v2.xml",
+        "path_type": "hardlink",
+        "sha256": "58f24ec91951345f34de68da99b05a5c80a6b5f3bb662f418fb09435eb79bd6f",
+        "sha256_in_prefix": "58f24ec91951345f34de68da99b05a5c80a6b5f3bb662f418fb09435eb79bd6f",
+        "size_in_bytes": 51470
+      },
+      {
+        "_path": "share/wayland-protocols/stable/viewporter/viewporter.xml",
+        "path_type": "hardlink",
+        "sha256": "dcb12279a03746301fe490aaed4b38a403485a925abfce2ccfceb644e104fe71",
+        "sha256_in_prefix": "dcb12279a03746301fe490aaed4b38a403485a925abfce2ccfceb644e104fe71",
+        "size_in_bytes": 8133
+      },
+      {
+        "_path": "share/wayland-protocols/stable/xdg-shell/xdg-shell.xml",
+        "path_type": "hardlink",
+        "sha256": "a43961371b6f74af4861b3ba71fc0159d8564c33ec19637581b5daa689b103be",
+        "sha256_in_prefix": "a43961371b6f74af4861b3ba71fc0159d8564c33ec19637581b5daa689b103be",
+        "size_in_bytes": 61016
+      },
+      {
+        "_path": "share/wayland-protocols/staging/alpha-modifier/alpha-modifier-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "1c1db85489a85c43ce086f7113c6794b8fc7888da07b2ade525a236169e44060",
+        "sha256_in_prefix": "1c1db85489a85c43ce086f7113c6794b8fc7888da07b2ade525a236169e44060",
+        "size_in_bytes": 4700
+      },
+      {
+        "_path": "share/wayland-protocols/staging/content-type/content-type-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "90e4bfceca5bb893f08314b4f859af065717325cd836a42a2f60ffa323e335b2",
+        "sha256_in_prefix": "90e4bfceca5bb893f08314b4f859af065717325cd836a42a2f60ffa323e335b2",
+        "size_in_bytes": 5741
+      },
+      {
+        "_path": "share/wayland-protocols/staging/cursor-shape/cursor-shape-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "249928c50dc731b58d8706e1fd27dff7a8740719f74e5c2315cc3f1d9df7b796",
+        "sha256_in_prefix": "249928c50dc731b58d8706e1fd27dff7a8740719f74e5c2315cc3f1d9df7b796",
+        "size_in_bytes": 8145
+      },
+      {
+        "_path": "share/wayland-protocols/staging/drm-lease/drm-lease-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "a1b748cf206e91afeb4210ab1714c943ac96d8726a1e7a290f87f92c6423f93c",
+        "sha256_in_prefix": "a1b748cf206e91afeb4210ab1714c943ac96d8726a1e7a290f87f92c6423f93c",
+        "size_in_bytes": 15233
+      },
+      {
+        "_path": "share/wayland-protocols/staging/ext-foreign-toplevel-list/ext-foreign-toplevel-list-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "402d97291a4041e377d9cc3930af7507bd9752edfc19810c2b4c8cf34aac3a3d",
+        "sha256_in_prefix": "402d97291a4041e377d9cc3930af7507bd9752edfc19810c2b4c8cf34aac3a3d",
+        "size_in_bytes": 10022
+      },
+      {
+        "_path": "share/wayland-protocols/staging/ext-idle-notify/ext-idle-notify-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "1e4f45a04eed87b6cd886ae7c3422f68fa8e0cb67c735b8266690b75e4bcbffe",
+        "sha256_in_prefix": "1e4f45a04eed87b6cd886ae7c3422f68fa8e0cb67c735b8266690b75e4bcbffe",
+        "size_in_bytes": 4522
+      },
+      {
+        "_path": "share/wayland-protocols/staging/ext-image-capture-source/ext-image-capture-source-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "eaa9e6c3b9c254762c2d8cbb691192bea777e221f18fbf0ba78c0feb02d54e77",
+        "sha256_in_prefix": "eaa9e6c3b9c254762c2d8cbb691192bea777e221f18fbf0ba78c0feb02d54e77",
+        "size_in_bytes": 5021
+      },
+      {
+        "_path": "share/wayland-protocols/staging/ext-image-copy-capture/ext-image-copy-capture-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "3df5c22f9fb2a2927f9a3dfdcd1b2bfa5c11ea92f622e11bd19beffe8ca2c6f5",
+        "sha256_in_prefix": "3df5c22f9fb2a2927f9a3dfdcd1b2bfa5c11ea92f622e11bd19beffe8ca2c6f5",
+        "size_in_bytes": 19012
+      },
+      {
+        "_path": "share/wayland-protocols/staging/ext-session-lock/ext-session-lock-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "a05df7d95c5e523e457037b3a149484e8064828cda66971f3c7caeb87d597a81",
+        "sha256_in_prefix": "a05df7d95c5e523e457037b3a149484e8064828cda66971f3c7caeb87d597a81",
+        "size_in_bytes": 16072
+      },
+      {
+        "_path": "share/wayland-protocols/staging/ext-transient-seat/ext-transient-seat-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "d7d836047218030558bbd4e706e6a9b7e91338c4b2b637215be6a5d26da58d81",
+        "sha256_in_prefix": "d7d836047218030558bbd4e706e6a9b7e91338c4b2b637215be6a5d26da58d81",
+        "size_in_bytes": 4672
+      },
+      {
+        "_path": "share/wayland-protocols/staging/fractional-scale/fractional-scale-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "5941de5d28f427ecdadddc8623a6f6af0a30b0ab4726847236ba7a7652b81316",
+        "sha256_in_prefix": "5941de5d28f427ecdadddc8623a6f6af0a30b0ab4726847236ba7a7652b81316",
+        "size_in_bytes": 4636
+      },
+      {
+        "_path": "share/wayland-protocols/staging/linux-drm-syncobj/linux-drm-syncobj-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "5ede41a56eced6aa635caa7ab2996066bff9fd211620dbf9f73aafab740bec71",
+        "sha256_in_prefix": "5ede41a56eced6aa635caa7ab2996066bff9fd211620dbf9f73aafab740bec71",
+        "size_in_bytes": 12655
+      },
+      {
+        "_path": "share/wayland-protocols/staging/security-context/security-context-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "6304d446feb4a99a41a2d1e2ec4dbfa8080c7854e58fec4f9ff9ec5ba4ff72f0",
+        "sha256_in_prefix": "6304d446feb4a99a41a2d1e2ec4dbfa8080c7854e58fec4f9ff9ec5ba4ff72f0",
+        "size_in_bytes": 8087
+      },
+      {
+        "_path": "share/wayland-protocols/staging/single-pixel-buffer/single-pixel-buffer-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "418752fc21986c7b855274849cd893de5fe454e308a8f3070172dfaa99bf5203",
+        "sha256_in_prefix": "418752fc21986c7b855274849cd893de5fe454e308a8f3070172dfaa99bf5203",
+        "size_in_bytes": 3195
+      },
+      {
+        "_path": "share/wayland-protocols/staging/tearing-control/tearing-control-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "846895b4a90ba1ddd75673cefc596480beef318f1694ec7dbca0fec54bb27043",
+        "sha256_in_prefix": "846895b4a90ba1ddd75673cefc596480beef318f1694ec7dbca0fec54bb27043",
+        "size_in_bytes": 5655
+      },
+      {
+        "_path": "share/wayland-protocols/staging/xdg-activation/xdg-activation-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "d8418be2d5738d50aff788bef1c7574f33f26659aa045447ff2ef9b78c58fe01",
+        "sha256_in_prefix": "d8418be2d5738d50aff788bef1c7574f33f26659aa045447ff2ef9b78c58fe01",
+        "size_in_bytes": 9016
+      },
+      {
+        "_path": "share/wayland-protocols/staging/xdg-dialog/xdg-dialog-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "2822956bdf13d51848ff4b5e29c509028c1204c6e06262ee926b001f43a42dbb",
+        "sha256_in_prefix": "2822956bdf13d51848ff4b5e29c509028c1204c6e06262ee926b001f43a42dbb",
+        "size_in_bytes": 4832
+      },
+      {
+        "_path": "share/wayland-protocols/staging/xdg-toplevel-drag/xdg-toplevel-drag-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "9c08a8d239b3dc8099bd9adc5b2cd0e0f4151d65ad0beba3328b7f73ad5f09e6",
+        "sha256_in_prefix": "9c08a8d239b3dc8099bd9adc5b2cd0e0f4151d65ad0beba3328b7f73ad5f09e6",
+        "size_in_bytes": 6779
+      },
+      {
+        "_path": "share/wayland-protocols/staging/xdg-toplevel-icon/xdg-toplevel-icon-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "c1553209039726be7641a97329beef4a22807a08cc3e8373c6da49c36abb290c",
+        "sha256_in_prefix": "c1553209039726be7641a97329beef4a22807a08cc3e8373c6da49c36abb290c",
+        "size_in_bytes": 9379
+      },
+      {
+        "_path": "share/wayland-protocols/staging/xwayland-shell/xwayland-shell-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "a6589c3205d1f424cbd2708c1507daf143db2d355dcd931f6f79986c0dc205b6",
+        "sha256_in_prefix": "a6589c3205d1f424cbd2708c1507daf143db2d355dcd931f6f79986c0dc205b6",
+        "size_in_bytes": 7561
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/fullscreen-shell/fullscreen-shell-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "fcc50bf0b48610d55bbe096a53da433e8557ea36a31feba2d77bf0cb9181bb52",
+        "sha256_in_prefix": "fcc50bf0b48610d55bbe096a53da433e8557ea36a31feba2d77bf0cb9181bb52",
+        "size_in_bytes": 12272
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/idle-inhibit/idle-inhibit-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "c2ac9f002c6669ca6c02eb9b587b8e9108e3ce6deab4a2de58b576f4f864ca38",
+        "sha256_in_prefix": "c2ac9f002c6669ca6c02eb9b587b8e9108e3ce6deab4a2de58b576f4f864ca38",
+        "size_in_bytes": 4017
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/input-method/input-method-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "e04464e22eee9ac67e21c3316c8bb47293656902c2f26b91ebdd8b40eeba03a0",
+        "sha256_in_prefix": "e04464e22eee9ac67e21c3316c8bb47293656902c2f26b91ebdd8b40eeba03a0",
+        "size_in_bytes": 12625
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/input-timestamps/input-timestamps-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "92d9911f070407d470458f59ffdee5406ce3b6368270a93e6ecd9f4f71368bb0",
+        "sha256_in_prefix": "92d9911f070407d470458f59ffdee5406ce3b6368270a93e6ecd9f4f71368bb0",
+        "size_in_bytes": 7129
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/keyboard-shortcuts-inhibit/keyboard-shortcuts-inhibit-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "9117d9e8ec02e9a3c3c55803b41e1227e76986f555f7c12eeb29f796fa63e69b",
+        "sha256_in_prefix": "9117d9e8ec02e9a3c3c55803b41e1227e76986f555f7c12eeb29f796fa63e69b",
+        "size_in_bytes": 6645
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/linux-dmabuf/linux-dmabuf-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "0681c01199393662229b0d9f71a4bd502350ea8f782a7049fa30e392b50fb2c8",
+        "sha256_in_prefix": "0681c01199393662229b0d9f71a4bd502350ea8f782a7049fa30e392b50fb2c8",
+        "size_in_bytes": 28768
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/linux-explicit-synchronization/linux-explicit-synchronization-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "4d83eed81e2911ec7731137d4209f685faeab76c15a994d8a46963a83fce02ea",
+        "sha256_in_prefix": "4d83eed81e2911ec7731137d4209f685faeab76c15a994d8a46963a83fce02ea",
+        "size_in_bytes": 11964
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/pointer-constraints/pointer-constraints-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "f980fac900ba1dcfbbe97f588fc17b893926bd2b57624563653a1bfe4d035948",
+        "sha256_in_prefix": "f980fac900ba1dcfbbe97f588fc17b893926bd2b57624563653a1bfe4d035948",
+        "size_in_bytes": 15115
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/pointer-gestures/pointer-gestures-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "5cf5adedae4397b8aebf4d41c8c626112daf87aa689e86316b756e095ecda109",
+        "sha256_in_prefix": "5cf5adedae4397b8aebf4d41c8c626112daf87aa689e86316b756e095ecda109",
+        "size_in_bytes": 11345
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/primary-selection/primary-selection-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "d568482ba84df6e531698b1f531810860995ca24d69495427fe43aee6017f52c",
+        "sha256_in_prefix": "d568482ba84df6e531698b1f531810860995ca24d69495427fe43aee6017f52c",
+        "size_in_bytes": 10469
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/relative-pointer/relative-pointer-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "ab4930dd3084f732b6fdd12ee6dbd0a112a758ed8a57b170366391dbeb1a22ff",
+        "sha256_in_prefix": "ab4930dd3084f732b6fdd12ee6dbd0a112a758ed8a57b170366391dbeb1a22ff",
+        "size_in_bytes": 6584
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/tablet/tablet-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "2816521e2716a98faa6f4f026527ec0912f8876136d58527ec3356553471fc6d",
+        "sha256_in_prefix": "2816521e2716a98faa6f4f026527ec0912f8876136d58527ec3356553471fc6d",
+        "size_in_bytes": 28788
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/tablet/tablet-unstable-v2.xml",
+        "path_type": "hardlink",
+        "sha256": "db291b574adb2d42d27f3d01a77723bb3350a7a32e6d33de16513521b42294a9",
+        "sha256_in_prefix": "db291b574adb2d42d27f3d01a77723bb3350a7a32e6d33de16513521b42294a9",
+        "size_in_bytes": 51690
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/text-input/text-input-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "a3671b8e50ebe04f4d114c7b982763ae2964e44be163fb3e9eb30efca8a111b1",
+        "sha256_in_prefix": "a3671b8e50ebe04f4d114c7b982763ae2964e44be163fb3e9eb30efca8a111b1",
+        "size_in_bytes": 16320
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/text-input/text-input-unstable-v3.xml",
+        "path_type": "hardlink",
+        "sha256": "49048087a67011a8840bca889cd2b0ba374382be1ed54ec98adf7837fdca1982",
+        "sha256_in_prefix": "49048087a67011a8840bca889cd2b0ba374382be1ed54ec98adf7837fdca1982",
+        "size_in_bytes": 21491
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/xdg-decoration/xdg-decoration-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "f197a768e4f7dbbfe4e50f0c74b760a55a804d06faff0527d1cb13e84da20a92",
+        "sha256_in_prefix": "f197a768e4f7dbbfe4e50f0c74b760a55a804d06faff0527d1cb13e84da20a92",
+        "size_in_bytes": 7091
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/xdg-foreign/xdg-foreign-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "bf5ea82077193a03b511e04f483a2a1bcf7f91e3e93bc550be4a69a74c0ad571",
+        "sha256_in_prefix": "bf5ea82077193a03b511e04f483a2a1bcf7f91e3e93bc550be4a69a74c0ad571",
+        "size_in_bytes": 8382
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/xdg-foreign/xdg-foreign-unstable-v2.xml",
+        "path_type": "hardlink",
+        "sha256": "625d83fbb068f48e69e739eafde507f10cdfe7480146f3ac10af9a2ddf551c80",
+        "sha256_in_prefix": "625d83fbb068f48e69e739eafde507f10cdfe7480146f3ac10af9a2ddf551c80",
+        "size_in_bytes": 9206
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/xdg-output/xdg-output-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "e20aa6f87bd8cc473b7ee1175604e2e09ce8227eadadc55ad8e3f9d003c251a3",
+        "sha256_in_prefix": "e20aa6f87bd8cc473b7ee1175604e2e09ce8227eadadc55ad8e3f9d003c251a3",
+        "size_in_bytes": 9672
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/xdg-shell/xdg-shell-unstable-v5.xml",
+        "path_type": "hardlink",
+        "sha256": "d771caedd1cd4eb965f05242005f87c7eccbd5eac2ddf8f1ee879bd4b45fb546",
+        "sha256_in_prefix": "d771caedd1cd4eb965f05242005f87c7eccbd5eac2ddf8f1ee879bd4b45fb546",
+        "size_in_bytes": 27720
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/xdg-shell/xdg-shell-unstable-v6.xml",
+        "path_type": "hardlink",
+        "sha256": "2299fcb1ce5b337d82247e7d988cf9da150af346f2fc65e9778d4950916981d1",
+        "sha256_in_prefix": "2299fcb1ce5b337d82247e7d988cf9da150af346f2fc65e9778d4950916981d1",
+        "size_in_bytes": 46309
+      },
+      {
+        "_path": "share/wayland-protocols/unstable/xwayland-keyboard-grab/xwayland-keyboard-grab-unstable-v1.xml",
+        "path_type": "hardlink",
+        "sha256": "fcc1e24ec465c209de576f75bf87438b8339e4da42051a3f26b48916292c7c6f",
+        "sha256_in_prefix": "fcc1e24ec465c209de576f75bf87438b8339e4da42051a3f26b48916292c7c6f",
+        "size_in_bytes": 5601
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "f6cac1efd4d2a6e30c1671f0566d4e6ac3fe2dc34c9ff7f309bbbc916520ebcf",
+  "size": 95953,
+  "subdir": "noarch",
+  "timestamp": 1725657284000,
+  "url": "https://conda.anaconda.org/conda-forge/noarch/wayland-protocols-1.37-hd8ed1ab_0.conda",
+  "version": "1.37"
+}

@@ -1,0 +1,91 @@
+{
+  "build": "h03adeef_0",
+  "build_number": 0,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "libgl >=1.7.0,<2.0a0",
+    "xorg-libx11 >=1.8.10,<2.0a0",
+    "libegl >=1.7.0,<2.0a0",
+    "xorg-libxext >=1.3.6,<2.0a0",
+    "libxcb >=1.17.0,<2.0a0",
+    "xorg-libxxf86vm >=1.1.5,<2.0a0",
+    "xorg-libxdamage >=1.1.6,<2.0a0",
+    "libdrm >=2.4.123,<2.5.0a0"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libglu-9.0.3-h03adeef_0",
+  "files": [
+    "include/GL/glu.h",
+    "lib/libGLU.a",
+    "lib/libGLU.so",
+    "lib/libGLU.so.1",
+    "lib/libGLU.so.1.3.1",
+    "lib/pkgconfig/glu.pc"
+  ],
+  "fn": "libglu-9.0.3-h03adeef_0.conda",
+  "license": "SGI-2",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libglu-9.0.3-h03adeef_0",
+    "type": 1
+  },
+  "md5": "b1df5affe904efe82ef890826b68881d",
+  "name": "libglu",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libglu-9.0.3-h03adeef_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "include/GL/glu.h",
+        "path_type": "hardlink",
+        "sha256": "3a9992ccc9d672cfdd07ea862431d943a992d04836570c638a733bf15ec62c54",
+        "sha256_in_prefix": "3a9992ccc9d672cfdd07ea862431d943a992d04836570c638a733bf15ec62c54",
+        "size_in_bytes": 17192
+      },
+      {
+        "_path": "lib/libGLU.a",
+        "path_type": "hardlink",
+        "sha256": "23b2967095c52fde85010b5ba00847ac96a7928934bba7da634e65a7d47e6862",
+        "sha256_in_prefix": "23b2967095c52fde85010b5ba00847ac96a7928934bba7da634e65a7d47e6862",
+        "size_in_bytes": 1225332
+      },
+      {
+        "_path": "lib/libGLU.so",
+        "path_type": "softlink",
+        "sha256": "572dec7b0778941cd65999cce303cf261281ab87606b76e5312e715297cd41e1",
+        "size_in_bytes": 450056
+      },
+      {
+        "_path": "lib/libGLU.so.1",
+        "path_type": "softlink",
+        "sha256": "572dec7b0778941cd65999cce303cf261281ab87606b76e5312e715297cd41e1",
+        "size_in_bytes": 450056
+      },
+      {
+        "_path": "lib/libGLU.so.1.3.1",
+        "path_type": "hardlink",
+        "sha256": "572dec7b0778941cd65999cce303cf261281ab87606b76e5312e715297cd41e1",
+        "sha256_in_prefix": "572dec7b0778941cd65999cce303cf261281ab87606b76e5312e715297cd41e1",
+        "size_in_bytes": 450056
+      },
+      {
+        "_path": "lib/pkgconfig/glu.pc",
+        "file_mode": "text",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/libglu_1731470709695/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_plac",
+        "sha256": "5fa27a8a308ba644b4de214c2fdcfdf7e4fb4647656e6e0e97f6d08399055491",
+        "sha256_in_prefix": "2331ea13c93e5d4420d53ba57be065eb7efbb501cb6894e9e13e9cbb995a227c",
+        "size_in_bytes": 441
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "cabd78b5ede1f3f161037d3a6cfb6b8a262ec474f9408859c364ef55ba778097",
+  "size": 325361,
+  "subdir": "linux-64",
+  "timestamp": 1731470892000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libglu-9.0.3-h03adeef_0.conda",
+  "version": "9.0.3"
+}

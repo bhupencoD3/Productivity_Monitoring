@@ -1,0 +1,50 @@
+{
+  "build": "he02047a_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "libgcc-ng >=12",
+    "__glibc >=2.17,<3.0.a0"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libgettextpo-0.22.5-he02047a_3",
+  "files": [
+    "lib/libgettextpo.so.0",
+    "lib/libgettextpo.so.0.5.10"
+  ],
+  "fn": "libgettextpo-0.22.5-he02047a_3.conda",
+  "license": "GPL-3.0-or-later",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libgettextpo-0.22.5-he02047a_3",
+    "type": 1
+  },
+  "md5": "efab66b82ec976930b96d62a976de8e7",
+  "name": "libgettextpo",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libgettextpo-0.22.5-he02047a_3.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libgettextpo.so.0",
+        "path_type": "hardlink",
+        "sha256": "dd4f9283fa1392a9247cc635eb88f9b42b2764e8ea37857120c31b98cd5385a9",
+        "sha256_in_prefix": "dd4f9283fa1392a9247cc635eb88f9b42b2764e8ea37857120c31b98cd5385a9",
+        "size_in_bytes": 395248
+      },
+      {
+        "_path": "lib/libgettextpo.so.0.5.10",
+        "path_type": "hardlink",
+        "sha256": "dd4f9283fa1392a9247cc635eb88f9b42b2764e8ea37857120c31b98cd5385a9",
+        "sha256_in_prefix": "dd4f9283fa1392a9247cc635eb88f9b42b2764e8ea37857120c31b98cd5385a9",
+        "size_in_bytes": 395248
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "7f2d1f4d69973e2c3c3d2b6420d5eb989982baba97d63ab2d7a2b25a92d886b4",
+  "size": 170646,
+  "subdir": "linux-64",
+  "timestamp": 1723626019000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libgettextpo-0.22.5-he02047a_3.conda",
+  "version": "0.22.5"
+}

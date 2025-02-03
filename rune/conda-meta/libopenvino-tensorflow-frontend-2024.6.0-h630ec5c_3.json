@@ -1,0 +1,57 @@
+{
+  "build": "h630ec5c_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "libabseil * cxx17*",
+    "libabseil >=20240722.0,<20240723.0a0",
+    "libprotobuf >=5.28.3,<5.28.4.0a0",
+    "snappy >=1.2.1,<1.3.0a0",
+    "libopenvino 2024.6.0 hac27bb2_3"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libopenvino-tensorflow-frontend-2024.6.0-h630ec5c_3",
+  "files": [
+    "lib/libopenvino_tensorflow_frontend.so.2024.6.0",
+    "lib/libopenvino_tensorflow_frontend.so.2460"
+  ],
+  "fn": "libopenvino-tensorflow-frontend-2024.6.0-h630ec5c_3.conda",
+  "license": "",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libopenvino-tensorflow-frontend-2024.6.0-h630ec5c_3",
+    "type": 1
+  },
+  "md5": "c5681cdf084833631ed5633a4e1d42fc",
+  "name": "libopenvino-tensorflow-frontend",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libopenvino-tensorflow-frontend-2024.6.0-h630ec5c_3.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libopenvino_tensorflow_frontend.so.2024.6.0",
+        "file_mode": "binary",
+        "path_type": "hardlink",
+        "prefix_placeholder": "/home/conda/feedstock_root/build_artifacts/openvino-split_1735801932902/_h_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placeh",
+        "sha256": "b3e7a8103c6397208f93baf887ad1168163990956e5668d80a954af459fd8f03",
+        "sha256_in_prefix": "105a050c02bf2c6a4d7595de8ad9f473448f181f7b34256519125fbfb802f33f",
+        "size_in_bytes": 4511520
+      },
+      {
+        "_path": "lib/libopenvino_tensorflow_frontend.so.2460",
+        "path_type": "softlink",
+        "sha256": "b3e7a8103c6397208f93baf887ad1168163990956e5668d80a954af459fd8f03",
+        "size_in_bytes": 4511520
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "c8b26c22017b90945e69d3dd43bbfc1ee12e0b28a4a9fdd7d58e397531a73c39",
+  "size": 1314247,
+  "subdir": "linux-64",
+  "timestamp": 1735814454000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenvino-tensorflow-frontend-2024.6.0-h630ec5c_3.conda",
+  "version": "2024.6.0"
+}

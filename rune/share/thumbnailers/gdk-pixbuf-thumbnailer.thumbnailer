@@ -1,0 +1,4 @@
+[Thumbnailer Entry]
+TryExec=/home/bhupen/Downloads/Productivity_Managment/bhupen-1-Productivity-Monitoring/rune/bin/gdk-pixbuf-thumbnailer
+Exec=/home/bhupen/Downloads/Productivity_Managment/bhupen-1-Productivity-Monitoring/rune/bin/gdk-pixbuf-thumbnailer -s %s %u %o
+MimeType=image/png;image/jpeg;image/gif;image/tiff;

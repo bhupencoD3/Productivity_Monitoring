@@ -1,69 +1,50 @@
 import cv2
-from face_recognition.detection import FaceMeshDetector
-from face_recognition.recognition import FaceRecognizer
+from face_recognition.detection import StableEyeDetector
+# from face_recognition.recognition import FaceRecognizer
 
 
 def main():
-    # Initialize the face mesh detector and face recognizer
-    face_mesh_detector = FaceMeshDetector(min_detection_confidence=0.5)
-    face_recognizer = FaceRecognizer()
+    detector = StableEyeDetector()
+    cap = cv2.VideoCapture(0)
 
-    # Load known faces and names
-    known_faces = [
-        "/home/bhupen/Downloads/bhupendra.jpeg",  # Replace with the correct paths
-        "/home/bhupen/Downloads/shubham.jpeg",
-    ]
-    known_names = ["bhupen", "Shubham"]  # Replace with the correct names
-    face_recognizer.load_known_faces(known_faces, known_names)
-
-    # EAR threshold for eye status
-    EAR_THRESHOLD = 0.3
-
-    # Start video capture
-    cap = cv2.VideoCapture(0)  # 0 for the default webcam
-
-    if not cap.isOpened():
-        print("Error: Unable to access the camera.")
-        return
+    # Set optimal camera parameters
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+    cap.set(cv2.CAP_PROP_FPS, 30)
 
     while True:
         ret, frame = cap.read()
         if not ret:
-            print("Error: Unable to read from the camera.")
             break
 
-        # Detect eye status and landmarks
-        ear, landmarks = face_mesh_detector.detect_eye_status(frame)
-        eye_status = "Open" if ear is not None and ear > EAR_THRESHOLD else "Closed"
+        # Process frame
+        ear, state, landmarks = detector.process_frame(frame)
 
-        # Perform face recognition
-        name = "No face detected"
-        if ear is not None:
-            name = face_recognizer.recognize_face(frame)
-
-        # Draw landmarks and bounding boxes
-        if landmarks is not None:
-            face_mesh_detector.draw_eye_landmarks(frame, landmarks)
-
-        # Display the recognized name and eye status
-        cv2.putText(
-            frame,
-            f"{name} | Eye: {eye_status}",
-            (10, 30),
-            cv2.FONT_HERSHEY_SIMPLEX,
-            0.7,
-            (0, 255, 0),
-            2,
+        # Display information
+        text = f"State: {state}"
+        color = (
+            (0, 255, 0)
+            if state == "open"
+            else (0, 0, 255)
+            if state == "closed"
+            else (0, 255, 255)
         )
 
-        # Show the frame
-        cv2.imshow("Face Recognition and Eye Status", frame)
+        cv2.putText(frame, text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
 
-        # Break the loop on 'q' key press
+        # Show calibration progress
+        if not detector.calibrated:
+            progress = min(len(detector.ear_window) / detector.calibration_frames, 1.0)
+            cv2.rectangle(frame, (10, 40), (210, 50), (50, 50, 50), -1)
+            cv2.rectangle(
+                frame, (10, 40), (10 + int(200 * progress), 50), (0, 255, 0), -1
+            )
+
+        cv2.imshow("Eye State Detection", frame)
+
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
-    # Release resources
     cap.release()
     cv2.destroyAllWindows()
 

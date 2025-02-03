@@ -1,0 +1,52 @@
+{
+  "build": "h3f63f65_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "pugixml >=1.14,<1.15.0a0",
+    "libopenvino 2024.6.0 hac27bb2_3"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libopenvino-ir-frontend-2024.6.0-h3f63f65_3",
+  "files": [
+    "lib/libopenvino_ir_frontend.so.2024.6.0",
+    "lib/libopenvino_ir_frontend.so.2460"
+  ],
+  "fn": "libopenvino-ir-frontend-2024.6.0-h3f63f65_3.conda",
+  "license": "",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libopenvino-ir-frontend-2024.6.0-h3f63f65_3",
+    "type": 1
+  },
+  "md5": "b977bfc0c549a779f812a655a8a69e6b",
+  "name": "libopenvino-ir-frontend",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libopenvino-ir-frontend-2024.6.0-h3f63f65_3.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libopenvino_ir_frontend.so.2024.6.0",
+        "path_type": "hardlink",
+        "sha256": "e27b60b9504268df73dbec389f2535382ed83a3b0dfd22dee94b7bea1c9aa6c9",
+        "sha256_in_prefix": "e27b60b9504268df73dbec389f2535382ed83a3b0dfd22dee94b7bea1c9aa6c9",
+        "size_in_bytes": 556752
+      },
+      {
+        "_path": "lib/libopenvino_ir_frontend.so.2460",
+        "path_type": "softlink",
+        "sha256": "e27b60b9504268df73dbec389f2535382ed83a3b0dfd22dee94b7bea1c9aa6c9",
+        "size_in_bytes": 556752
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "b21dfc69dcbfaa13e230a01f0e35f5ca487f7c5e55c4b121cd212622c9ee71b0",
+  "size": 210368,
+  "subdir": "linux-64",
+  "timestamp": 1735814388000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenvino-ir-frontend-2024.6.0-h3f63f65_3.conda",
+  "version": "2024.6.0"
+}

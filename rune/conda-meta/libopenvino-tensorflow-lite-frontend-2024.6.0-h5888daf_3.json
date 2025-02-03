@@ -1,0 +1,51 @@
+{
+  "build": "h5888daf_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "libopenvino 2024.6.0 hac27bb2_3"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libopenvino-tensorflow-lite-frontend-2024.6.0-h5888daf_3",
+  "files": [
+    "lib/libopenvino_tensorflow_lite_frontend.so.2024.6.0",
+    "lib/libopenvino_tensorflow_lite_frontend.so.2460"
+  ],
+  "fn": "libopenvino-tensorflow-lite-frontend-2024.6.0-h5888daf_3.conda",
+  "license": "",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libopenvino-tensorflow-lite-frontend-2024.6.0-h5888daf_3",
+    "type": 1
+  },
+  "md5": "dfbbe82b7a068af10f55b40837e1b942",
+  "name": "libopenvino-tensorflow-lite-frontend",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libopenvino-tensorflow-lite-frontend-2024.6.0-h5888daf_3.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libopenvino_tensorflow_lite_frontend.so.2024.6.0",
+        "path_type": "hardlink",
+        "sha256": "03c1ae54d5152845d8d6209d9737963d6de535c2579ccec41b14c13ecaa22d05",
+        "sha256_in_prefix": "03c1ae54d5152845d8d6209d9737963d6de535c2579ccec41b14c13ecaa22d05",
+        "size_in_bytes": 1628432
+      },
+      {
+        "_path": "lib/libopenvino_tensorflow_lite_frontend.so.2460",
+        "path_type": "softlink",
+        "sha256": "03c1ae54d5152845d8d6209d9737963d6de535c2579ccec41b14c13ecaa22d05",
+        "size_in_bytes": 1628432
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "c22c2acedb95e9c1cacb06315e83ca8f9b76232085cab928b7c425085b17ade2",
+  "size": 489241,
+  "subdir": "linux-64",
+  "timestamp": 1735814470000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenvino-tensorflow-lite-frontend-2024.6.0-h5888daf_3.conda",
+  "version": "2024.6.0"
+}

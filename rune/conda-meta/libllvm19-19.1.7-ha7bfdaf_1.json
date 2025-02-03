@@ -1,0 +1,69 @@
+{
+  "build": "ha7bfdaf_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "libzlib >=1.3.1,<2.0a0",
+    "zstd >=1.5.6,<1.6.0a0",
+    "libxml2 >=2.13.5,<3.0a0"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libllvm19-19.1.7-ha7bfdaf_1",
+  "files": [
+    "lib/libLLVM-19.so",
+    "lib/libLLVM.so.19.1",
+    "lib/libLTO.so.19.1",
+    "lib/libRemarks.so.19.1"
+  ],
+  "fn": "libllvm19-19.1.7-ha7bfdaf_1.conda",
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libllvm19-19.1.7-ha7bfdaf_1",
+    "type": 1
+  },
+  "md5": "6d2362046dce932eefbdeb0540de0c38",
+  "name": "libllvm19",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libllvm19-19.1.7-ha7bfdaf_1.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libLLVM-19.so",
+        "path_type": "softlink",
+        "sha256": "5eb6ccaafd343d9f1f953cd3ee7b3113f6c1c2f95cedcbbb85547b7b103ca270",
+        "size_in_bytes": 166329472
+      },
+      {
+        "_path": "lib/libLLVM.so.19.1",
+        "path_type": "hardlink",
+        "sha256": "5eb6ccaafd343d9f1f953cd3ee7b3113f6c1c2f95cedcbbb85547b7b103ca270",
+        "sha256_in_prefix": "5eb6ccaafd343d9f1f953cd3ee7b3113f6c1c2f95cedcbbb85547b7b103ca270",
+        "size_in_bytes": 166329472
+      },
+      {
+        "_path": "lib/libLTO.so.19.1",
+        "path_type": "hardlink",
+        "sha256": "98838e08df9363d57c7bcd28bf176cd610f2e6d2836e17b0053206fb882adb68",
+        "sha256_in_prefix": "98838e08df9363d57c7bcd28bf176cd610f2e6d2836e17b0053206fb882adb68",
+        "size_in_bytes": 104920
+      },
+      {
+        "_path": "lib/libRemarks.so.19.1",
+        "path_type": "hardlink",
+        "sha256": "2e28cec354fcbcee324ef0410569b4eb76764488d2e74b837e25e62db42b54d1",
+        "sha256_in_prefix": "2e28cec354fcbcee324ef0410569b4eb76764488d2e74b837e25e62db42b54d1",
+        "size_in_bytes": 14952
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "22909d64038bdc87de61311c4ae615dc574a548a7340b963bb7c9eb61b191669",
+  "size": 40143643,
+  "subdir": "linux-64",
+  "timestamp": 1737789465000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libllvm19-19.1.7-ha7bfdaf_1.conda",
+  "version": "19.1.7"
+}

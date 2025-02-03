@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import torch
 from facenet_pytorch import InceptionResnetV1, MTCNN
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -10,7 +11,7 @@ class FaceRecognizer:
         self.mtcnn = MTCNN(keep_all=True)  # Used for face detection
         self.model = InceptionResnetV1(
             pretrained="vggface2"
-        ).eval()  # Used for face recognition
+        ).eval()  # Face recognition model
         self.known_embeddings = []
         self.known_names = []
 
@@ -26,49 +27,62 @@ class FaceRecognizer:
             img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # Convert to RGB
 
             # Detect faces using MTCNN
-            faces = self.mtcnn(img_rgb)  # Only one value returned
+            faces = self.mtcnn(img_rgb)  # This returns a batch of face tensors
 
             if faces is not None:
-                for face in faces:
-                    embedding = self.get_embedding(face)  # Get the face embedding
-                    self.known_embeddings.append(embedding)
+                # If multiple faces are detected, process the first one
+                if isinstance(faces, list):
+                    faces = faces[0]
+
+                embedding = self.get_embedding(faces)  # Get the face embedding
+                self.known_embeddings.append(embedding)
+
         self.known_names = known_names
 
     def get_embedding(self, face_img):
         """
         Given a face image, get the embedding using InceptionResnetV1.
         """
-        # Ensure face_img is a 4D tensor: [batch_size, channels, height, width]
-        face_img = face_img.unsqueeze(0)  # Add batch dimension
+        if face_img.ndimension() == 3:  # If a single image, add batch dimension
+            face_img = face_img.unsqueeze(0)  # Shape becomes [1, 3, 160, 160]
+
         face_embedding = self.model(face_img)
         return face_embedding.detach().cpu().numpy()
 
     def recognize_face(self, face_img):
         """
-        Recognizes a face and returns the name of the person.
+        Recognizes a face and returns the name and confidence score of the person.
         """
         face_rgb = cv2.cvtColor(face_img, cv2.COLOR_BGR2RGB)  # Convert to RGB
         faces = self.mtcnn(face_rgb)  # Detect faces using MTCNN
 
-        if faces is None or len(faces) == 0:  # Check if faces is None or empty
-            return "No face detected"
+        if faces is None:  # Handle case when no face is detected
+            return "No face detected", 0.0
 
-        # Process the first detected face
-        face_embedding = self.get_embedding(faces[0])
+        # If multiple faces detected, take the first one
+        if isinstance(faces, list):
+            faces = faces[0]
 
-        # Flatten the face_embedding to a 1D array
-        face_embedding = face_embedding.flatten()
+        # Ensure faces is a batch of tensors (4D: [1, 3, 160, 160])
+        if faces.ndimension() == 3:
+            faces = faces.unsqueeze(0)
 
-        # Compare the detected face embedding with known face embeddings
+        # Process detected face
+        face_embedding = self.get_embedding(faces)
+        face_embedding = face_embedding.flatten()  # Ensure 1D
+
+        # Compare with known face embeddings
         similarities = [
-            cosine_similarity([face_embedding], [embed.flatten()])[0][
-                0
-            ]  # Flatten the known embeddings as well
+            cosine_similarity([face_embedding], [embed.flatten()])[0][0]
             for embed in self.known_embeddings
         ]
 
-        best_match_index = np.argmax(similarities)
-        name = "Unknown"
-        if similarities[best_match_index] > 0.5:  # Threshold for recognizing
-            name = self.known_names[best_match_index]
-        return name
+        # Identify best match and confidence score
+        if similarities:  # Ensure there are known faces to compare with
+            best_match_index = np.argmax(similarities)
+            confidence = similarities[best_match_index]  # Confidence score
+
+            if confidence > 0.5:  # Recognition threshold
+                return self.known_names[best_match_index], confidence
+
+        return "Unknown", 0.0

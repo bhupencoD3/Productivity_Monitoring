@@ -1,0 +1,45 @@
+{
+  "build": "h4d9b6c2_3",
+  "build_number": 3,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "tbb >=2021.13.0",
+    "libopenvino 2024.6.0 hac27bb2_3"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libopenvino-auto-plugin-2024.6.0-h4d9b6c2_3",
+  "files": [
+    "lib/openvino-2024.6.0/libopenvino_auto_plugin.so"
+  ],
+  "fn": "libopenvino-auto-plugin-2024.6.0-h4d9b6c2_3.conda",
+  "license": "",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libopenvino-auto-plugin-2024.6.0-h4d9b6c2_3",
+    "type": 1
+  },
+  "md5": "246bbf8c6e41b5ea85b2af7c2c51bda5",
+  "name": "libopenvino-auto-plugin",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libopenvino-auto-plugin-2024.6.0-h4d9b6c2_3.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/openvino-2024.6.0/libopenvino_auto_plugin.so",
+        "path_type": "hardlink",
+        "sha256": "141b39ca0cce3aab3748420e6ad329a93c3fbe05a47bbeff4960d56a75232774",
+        "sha256_in_prefix": "141b39ca0cce3aab3748420e6ad329a93c3fbe05a47bbeff4960d56a75232774",
+        "size_in_bytes": 616592
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "74165827852afe50ae3625c832bc9dc9d8bd6f0d5ed4aa5bc4b6917974f0f553",
+  "size": 241845,
+  "subdir": "linux-64",
+  "timestamp": 1735814255000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenvino-auto-plugin-2024.6.0-h4d9b6c2_3.conda",
+  "version": "2024.6.0"
+}

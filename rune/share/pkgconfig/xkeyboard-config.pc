@@ -1,0 +1,7 @@
+
+datadir=/home/bhupen/Downloads/Productivity_Managment/bhupen-1-Productivity-Monitoring/rune/share
+xkb_base=/home/bhupen/Downloads/Productivity_Managment/bhupen-1-Productivity-Monitoring/rune/share/X11/xkb
+
+Name: XKeyboardConfig
+Description: X Keyboard configuration data
+Version: 2.43

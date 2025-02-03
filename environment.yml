@@ -5,6 +5,9 @@ dependencies:
   - python=3.11
   - opencv
   - numpy
+  - scikit-learn
+  - scipy
+  - collection
   - pip
   - pip:
       - mediapipe

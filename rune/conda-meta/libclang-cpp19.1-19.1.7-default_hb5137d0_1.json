@@ -1,0 +1,44 @@
+{
+  "build": "default_hb5137d0_1",
+  "build_number": 1,
+  "channel": "https://conda.anaconda.org/conda-forge/linux-64",
+  "constrains": [],
+  "depends": [
+    "__glibc >=2.17,<3.0.a0",
+    "libgcc >=13",
+    "libstdcxx >=13",
+    "libllvm19 >=19.1.7,<19.2.0a0"
+  ],
+  "extracted_package_dir": "/home/bhupen/miniconda3/pkgs/libclang-cpp19.1-19.1.7-default_hb5137d0_1",
+  "files": [
+    "lib/libclang-cpp.so.19.1"
+  ],
+  "fn": "libclang-cpp19.1-19.1.7-default_hb5137d0_1.conda",
+  "license": "Apache-2.0 WITH LLVM-exception",
+  "link": {
+    "source": "/home/bhupen/miniconda3/pkgs/libclang-cpp19.1-19.1.7-default_hb5137d0_1",
+    "type": 1
+  },
+  "md5": "6454f8c8c6094faaaf12acb912c1bb33",
+  "name": "libclang-cpp19.1",
+  "package_tarball_full_path": "/home/bhupen/miniconda3/pkgs/libclang-cpp19.1-19.1.7-default_hb5137d0_1.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "lib/libclang-cpp.so.19.1",
+        "path_type": "hardlink",
+        "sha256": "85082d77dda12f52de69842d554ffe927f930ffdc07b364cbab7d3cf2108d1dd",
+        "sha256_in_prefix": "85082d77dda12f52de69842d554ffe927f930ffdc07b364cbab7d3cf2108d1dd",
+        "size_in_bytes": 93799248
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "None",
+  "sha256": "bca72b520bcb1b3a5df436978f94dfd830274277874d6f270beb6c0ef7504df8",
+  "size": 20537158,
+  "subdir": "linux-64",
+  "timestamp": 1737784459000,
+  "url": "https://conda.anaconda.org/conda-forge/linux-64/libclang-cpp19.1-19.1.7-default_hb5137d0_1.conda",
+  "version": "19.1.7"
+}
