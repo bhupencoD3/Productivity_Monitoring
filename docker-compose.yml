@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: productivity_db
+      MYSQL_USER: productivity_user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+
+  app:
+    build: .
+    environment:
+      - DB_HOST=mariadb
+      - DB_USER=productivity_user
+      - DB_PASSWORD=password
+      - DB_NAME=productivity_db
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb-data:
