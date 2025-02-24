@@ -1,31 +1,18 @@
+# app/utils/db_connection.py
 import mysql.connector
-from app.config import DATABASE_CONFIG
+from config import DB_CONFIG
+
 
 def get_db_connection():
-    """Creates a connection to the MySQL database."""
     try:
-        connection = mysql.connector.connect(
-            host=DATABASE_CONFIG['host'],
-            user=DATABASE_CONFIG['user'],
-            password=DATABASE_CONFIG['password'],
-            database=DATABASE_CONFIG['database']
-        )
+        connection = mysql.connector.connect(**DB_CONFIG)
         return connection
-    except mysql.connector.Error as err:
-        print(f"Error: {err}")
+    except Exception as e:
+        print(f"Error connecting to MySQL: {e}")
         return None
 
-def execute_query(query):
-    """Executes a query on the database and returns results."""
-    connection = get_db_connection()
-    if connection:
-        try:
-            cursor = connection.cursor()
-            cursor.execute(query)
-            results = cursor.fetchall()
-            connection.close()
-            return results
-        except mysql.connector.Error as err:
-            print(f"Error executing query: {err}")
-            connection.close()
-    return None
+
+def close_db_connection(connection):
+    if connection and connection.is_connected():
+        connection.close()
+

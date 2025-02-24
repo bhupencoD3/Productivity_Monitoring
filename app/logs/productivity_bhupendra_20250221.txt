@@ -1,0 +1,11 @@
+Productivity Report for bhupendra
+Monitoring started: 2025-02-21 00:27:35
+
+Frame logged: frame_logs/bhupendra_20250221_002736.jpg
+Frame logged: frame_logs/tushar_20250221_002737.jpg
+Frame logged: frame_logs/bhupendra_20250221_002738.jpg
+Closed Period: 00:27:38 - 00:27:38 (0.5s)
+
+Monitoring ended: 2025-02-21 00:27:40
+Total Closed Duration: 0.5 seconds
+Productivity Score: 100.0%

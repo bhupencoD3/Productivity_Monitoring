@@ -1,7 +1,9 @@
+# face_recognition/recognition.py (Updated with MySQL and Employee IDs)
 import cv2
 import numpy as np
 import torch
 from facenet_pytorch import InceptionResnetV1, MTCNN
+from dao.employee_dao import EmployeeDAO  # Import DAO for DB access
 
 
 class ProductivityRecognizer:
@@ -13,20 +15,32 @@ class ProductivityRecognizer:
             device=self.device,
             margin=40,
             min_face_size=40,  # Reduced to detect smaller faces
-            thresholds=[0.5, 0.6, 0.6],  # Further lowered thresholds
+            thresholds=[0.5, 0.6, 0.6],  # Lowered thresholds
             post_process=False,
             select_largest=True,  # Prioritize largest face
         )
         self.resnet = InceptionResnetV1(pretrained="vggface2").eval().to(self.device)
         self.known_embeddings = []
         self.known_names = []
+        self.employee_map = {}  # Map name to employee_id
         self.user_identified = False
         self.identified_user = "Unknown"
+        self.employee_id = None  # Store the identified employee's ID
+        self.dao = EmployeeDAO()  # Initialize DAO
         self.load_known_faces(known_faces)
 
     def load_known_faces(self, face_data):
+        """
+        Load known faces into memory and store them in the employees table.
+        """
         print("Loading known faces...")
         for name, path in face_data:
+            # Add employee to database if not already present
+            employee_id = self.dao.add_employee(name, face_image_path=path)
+            if employee_id is None:
+                print(f"Failed to add {name} to database")
+                continue
+
             img = cv2.imread(path)
             if img is None:
                 print(f"Failed to load image: {path}")
@@ -39,15 +53,21 @@ class ProductivityRecognizer:
             embedding = (
                 self.resnet(faces[:1]).detach().cpu().numpy()[0]
             )  # First face only
-            print(f"Loaded {name} embedding, shape: {embedding.shape}")
+            print(
+                f"Loaded {name} embedding, shape: {embedding.shape}, employee_id: {employee_id}"
+            )
             self.known_embeddings.append(embedding)
             self.known_names.append(name)
+            self.employee_map[name] = employee_id  # Map name to employee_id
+
         print(f"Loaded {len(self.known_embeddings)} known faces")
         if not self.known_embeddings:
             print("Warning: No known faces loaded. Recognition will fail.")
 
     def recognize_user(self, frame):
-        # Check frame validity
+        """
+        Recognize a user from a frame and set identified_user and employee_id.
+        """
         if frame is None or frame.size == 0:
             print("Invalid frame received")
             return False
@@ -81,15 +101,16 @@ class ProductivityRecognizer:
                     print(
                         f"Best match: {self.known_names[max_index]} with score {score}"
                     )
-                    if score > 0.9:  # Further lowered threshold to 0.5
+                    if score > 0.8:  # Adjust threshold as needed
                         self.user_identified = True
                         self.identified_user = self.known_names[max_index]
+                        self.employee_id = self.employee_map[self.identified_user]
                         print(
-                            f"Identified user: {self.identified_user} (score: {score})"
+                            f"Identified user: {self.identified_user} (employee_id: {self.employee_id}, score: {score})"
                         )
                         return True
                     else:
-                        print(f"Score {score} below threshold (0.5)")
+                        print(f"Score {score} below threshold (0.8)")
             except Exception as e:
                 print(f"Recognition error: {str(e)}")
         else:
@@ -97,4 +118,14 @@ class ProductivityRecognizer:
         return False
 
     def get_identity(self):
+        """
+        Return the identified user's name.
+        """
         return self.identified_user if self.user_identified else "Unknown"
+
+    def get_employee_id(self):
+        """
+        Return the identified employee's ID.
+        """
+        return self.employee_id if self.user_identified else None
+

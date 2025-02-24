@@ -1,0 +1,145 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productivity Monitor</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f7fa;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: #3498db;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+      #shutdownBtn {
+        background-color: #e74c3c;
+      }
+      #shutdownBtn:hover {
+        background-color: #c0392b;
+      }
+      #videoFeed {
+        display: none;
+        max-width: 100%;
+        border-radius: 5px;
+        margin: 20px auto;
+        border: 2px solid #ddd;
+      }
+      #videoFeed.active {
+        display: block;
+      }
+      #status {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 5px;
+        white-space: pre-wrap;
+        font-size: 14px;
+        color: #34495e;
+        margin-top: 20px;
+      }
+      .stats-container {
+        margin-top: 20px;
+      }
+      .stats-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .stats-table th,
+      .stats-table td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      .stats-table th {
+        background-color: #3498db;
+        color: #fff;
+      }
+      .spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Productivity Monitor</h1>
+      <div class="controls">
+        <button onclick="initialize()">Initialize</button>
+        <button onclick="startRecognition()">Start Recognition</button>
+        <button onclick="getStats()">Get Stats</button>
+        <button onclick="stopMonitoring()">Stop Monitoring</button>
+        <button onclick="toggleDebug()">Toggle Debug Video</button>
+        <button id="shutdownBtn" onclick="shutdown()">Shutdown</button>
+      </div>
+      <div class="spinner" id="spinner"></div>
+      <img id="videoFeed" src="" alt="Video Feed Unavailable" />
+      <div id="status">Status: Not initialized</div>
+      <div class="stats-container" id="stats-container" style="display: none">
+        <h3>Monitoring Stats</h3>
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody id="stats-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="/static/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
