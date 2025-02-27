@@ -1,153 +1,18 @@
-// static/script.js
-let ws = null;
+// Configuration
+const API_ENDPOINTS = {
+  INITIALIZE: "/initialize",
+  RECOGNIZE: "/recognize",
+  STATS: "/stats",
+  STOP: "/stop",
+  TOGGLE_DEBUG: "/toggle_debug",
+  SHUTDOWN: "/shutdown",
+};
+
 let statsInterval = null;
 
-async function initialize() {
-  showSpinner(true);
-  const knownFaces = [
-    {
-      name: "bhupen",
-      path: "/home/bhupen/Productivity_tracker_edited/pRODUCTIVITY-mONITORING/app/known_faces/bhupend.jpeg",
-    }, // Adjust for your Linux path
-    {
-      name: "tushar",
-      path: "/home/bhupen/Productivity_tracker_edited/pRODUCTIVITY-mONITORING/app/known_faces/2025-01-31_11_09_17.jpg",
-    },
-    {
-      name: "bhupendra",
-      path: "/home/bhupen/Productivity_tracker_edited/pRODUCTIVITY-mONITORING/app/known_faces/bhupendra.jpeg",
-    },
-    {
-      name: "shubham",
-      path: "/home/bhupen/Productivity_tracker_edited/pRODUCTIVITY-mONITORING/app/known_faces/shubham.jpeg",
-    },
-  ];
-
-  try {
-    const response = await fetch("/initialize", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(knownFaces),
-    });
-    const result = await response.json();
-    updateStatus(`Status: ${result.message}`);
-  } catch (error) {
-    updateStatus(`Error: ${error.message}`);
-  } finally {
-    showSpinner(false);
-  }
-}
-
-async function startRecognition() {
-  showSpinner(true);
-  try {
-    const response = await fetch("/recognize");
-    const result = await response.json();
-    updateStatus(`Status: ${result.message}\nUser: ${result.user_id}`);
-    document.getElementById("videoFeed").classList.remove("active");
-    if (ws) {
-      ws.close();
-      ws = null;
-    }
-    startStatsUpdates();
-  } catch (error) {
-    updateStatus(`Error: ${error.message}`);
-  } finally {
-    showSpinner(false);
-  }
-}
-
-async function getStats() {
-  try {
-    const response = await fetch("/stats");
-    const stats = await response.json();
-    updateStatsTable(stats);
-  } catch (error) {
-    updateStatus(`Error: ${error.message}`);
-  }
-}
-
-function startStatsUpdates() {
-  if (statsInterval) clearInterval(statsInterval);
-  statsInterval = setInterval(async () => {
-    await getStats();
-  }, 2000);
-}
-
-async function stopMonitoring() {
-  showSpinner(true);
-  try {
-    const response = await fetch("/stop", { method: "POST" });
-    const result = await response.json();
-    updateStatus(`Status: ${result.message}`);
-    const videoFeed = document.getElementById("videoFeed");
-    if (ws) {
-      ws.close();
-      ws = null;
-    }
-    videoFeed.classList.remove("active");
-    videoFeed.src = "";
-    clearInterval(statsInterval);
-    document.getElementById("stats-container").style.display = "none";
-  } catch (error) {
-    updateStatus(`Error: ${error.message}`);
-  } finally {
-    showSpinner(false);
-  }
-}
-
-async function toggleDebug() {
-  try {
-    const response = await fetch("/toggle_debug", { method: "POST" });
-    const result = await response.json();
-    const videoFeed = document.getElementById("videoFeed");
-    if (result.debug_mode) {
-      videoFeed.classList.add("active");
-      if (!ws) {
-        ws = new WebSocket("ws://localhost:8000/video");
-        ws.onmessage = (event) => {
-          console.log("Received frame data");
-          videoFeed.src = `data:image/jpeg;base64,${event.data}`;
-        };
-        ws.onerror = (error) => {
-          console.error("WebSocket error:", error);
-          updateStatus("WebSocket error");
-        };
-        ws.onclose = () => {
-          videoFeed.classList.remove("active");
-          ws = null;
-          console.log("WebSocket closed");
-        };
-      }
-    } else {
-      if (ws) {
-        ws.close();
-        ws = null;
-      }
-      videoFeed.classList.remove("active");
-      videoFeed.src = "";
-    }
-  } catch (error) {
-    updateStatus(`Error: ${error.message}`);
-  }
-}
-
-async function shutdown() {
-  showSpinner(true);
-  const secret = prompt("Enter shutdown secret key:");
-  try {
-    const response = await fetch("/shutdown", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ secret: secret }),
-    });
-    const result = await response.json();
-    updateStatus(`Status: ${result.message}`);
-  } catch (error) {
-    updateStatus(`Error: ${error.message}`);
-  } finally {
-    showSpinner(false);
-  }
+// Utility Functions
+function showSpinner(show) {
+  document.getElementById("spinner").style.display = show ? "block" : "none";
 }
 
 function updateStatus(message) {
@@ -156,19 +21,123 @@ function updateStatus(message) {
 
 function updateStatsTable(stats) {
   const tbody = document.getElementById("stats-table-body");
-  const totalClosedTime =
-    stats.total_closed_time !== undefined
-      ? stats.total_closed_time.toFixed(1)
-      : "0.0";
+  const totalClosedTime = stats.total_closed_time?.toFixed(1) || "0.0";
+  const stateSince = stats.state_since || "N/A";
+  const recentLogs =
+    stats.pending_logs
+      ?.map((log) => `${log.start} - ${log.end} (${log.duration}s)`)
+      .join("<br>") || "No logs yet";
+
   tbody.innerHTML = `
-        <tr><td>User State</td><td>${stats.current_state || "N/A"}</td></tr>
-        <tr><td>Total Closed Time</td><td>${totalClosedTime}s</td></tr>
-        <tr><td>State Since</td><td>${stats.state_since || "N/A"}</td></tr>
-        <tr><td>Recent Logs</td><td>${stats.pending_logs && stats.pending_logs.length > 0 ? stats.pending_logs.map((log) => `${log.start} - ${log.end} (${log.duration}s)`).join("<br>") : "No logs yet"}</td></tr>
-    `;
+    <tr><td>User State</td><td>${stats.current_state || "N/A"}</td></tr>
+    <tr><td>Total Closed Time</td><td>${totalClosedTime}s</td></tr>
+    <tr><td>State Since</td><td>${stateSince}</td></tr>
+    <tr><td>Recent Logs</td><td>${recentLogs}</td></tr>
+  `;
   document.getElementById("stats-container").style.display = "block";
 }
 
-function showSpinner(show) {
-  document.getElementById("spinner").style.display = show ? "block" : "none";
+async function fetchWithSpinner(url, options = {}) {
+  showSpinner(true);
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(response.statusText || "Request failed");
+    }
+    return await response.json();
+  } catch (error) {
+    updateStatus(`Error: ${error.message}`);
+    throw error;
+  } finally {
+    showSpinner(false);
+  }
+}
+
+// Main Functions
+async function initialize() {
+  try {
+    const result = await fetchWithSpinner(API_ENDPOINTS.INITIALIZE, {
+      method: "POST",
+    });
+    updateStatus(`Status: ${result.message}`);
+  } catch (error) {
+    console.error("Initialization failed:", error);
+  }
+}
+
+async function startRecognition() {
+  showSpinner(true);
+  try {
+    const response = await fetch(API_ENDPOINTS.RECOGNIZE);
+    const result = await response.json();
+    console.log("Recognition result:", result); // Debug
+    if (response.ok) {
+      updateStatus(
+        `Status: ${result.message}\nUser: ${result.name || "Unknown"} (ID: ${result.employee_id || "N/A"})`,
+      );
+      startStatsUpdates();
+    } else {
+      updateStatus(`Status: ${result.detail || "Recognition failed"}`);
+    }
+  } catch (error) {
+    updateStatus(`Error: ${error.message}`);
+  } finally {
+    showSpinner(false);
+  }
+}
+async function getStats() {
+  try {
+    const stats = await fetchWithSpinner(API_ENDPOINTS.STATS);
+    updateStatsTable(stats);
+  } catch (error) {
+    console.error("Failed to fetch stats:", error);
+  }
+}
+
+function startStatsUpdates() {
+  if (statsInterval) clearInterval(statsInterval);
+  statsInterval = setInterval(getStats, 2000);
+}
+
+async function stopMonitoring() {
+  try {
+    const result = await fetchWithSpinner(API_ENDPOINTS.STOP, {
+      method: "POST",
+    });
+    updateStatus(`Status: ${result.message}`);
+    clearInterval(statsInterval);
+    document.getElementById("stats-container").style.display = "none";
+  } catch (error) {
+    console.error("Failed to stop monitoring:", error);
+  }
+}
+
+async function toggleDebug() {
+  try {
+    const result = await fetchWithSpinner(API_ENDPOINTS.TOGGLE_DEBUG, {
+      method: "POST",
+    });
+    updateStatus(`Debug mode: ${result.debug_mode}`);
+  } catch (error) {
+    console.error("Failed to toggle debug mode:", error);
+  }
+}
+
+async function shutdown() {
+  const secret = prompt("Enter shutdown secret key:");
+  if (!secret) {
+    updateStatus("Shutdown canceled: No secret key provided");
+    return;
+  }
+
+  try {
+    const result = await fetchWithSpinner(API_ENDPOINTS.SHUTDOWN, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ secret }),
+    });
+    updateStatus(`Status: ${result.message}`);
+  } catch (error) {
+    console.error("Failed to shutdown:", error);
+  }
 }

@@ -1,6 +1,9 @@
-# app/dao/employee_dao.py
+# app/dao/employee_dao.py (Updated with get_all_employees)
 import mysql.connector
-from utils.db_connection import get_db_connection, close_db_connection
+from utils.db_connection import (
+    get_db_connection,
+    close_db_connection,
+)  # Adjusted import path
 
 
 class EmployeeDAO:
@@ -10,12 +13,19 @@ class EmployeeDAO:
             return None
         cursor = conn.cursor()
         try:
-            if face_image_data:  # Store image as BLOB
+            # Check if name exists
+            cursor.execute("SELECT employee_id FROM employees WHERE name = %s", (name,))
+            existing = cursor.fetchone()
+            if existing:
+                print(f"Employee {name} already exists with ID {existing[0]}")
+                return existing[0]
+
+            if face_image_data:
                 cursor.execute(
                     "INSERT INTO employees (name, face_image) VALUES (%s, %s)",
                     (name, face_image_data),
                 )
-            else:  # Store image path
+            else:
                 cursor.execute(
                     "INSERT INTO employees (name, face_image_path) VALUES (%s, %s)",
                     (name, face_image_path),
@@ -89,3 +99,22 @@ class EmployeeDAO:
             cursor.close()
             close_db_connection(conn)
 
+    def get_all_employees(self):
+        """
+        Fetch all employees from the employees table.
+        """
+        conn = get_db_connection()
+        if conn is None:
+            print("Failed to connect to database")
+            return []
+        cursor = conn.cursor(dictionary=True)
+        try:
+            cursor.execute("SELECT employee_id, name, face_image_path FROM employees")
+            employees = cursor.fetchall()
+            return employees
+        except Exception as e:
+            print(f"Error fetching all employees: {e}")
+            return []
+        finally:
+            cursor.close()
+            close_db_connection(conn)

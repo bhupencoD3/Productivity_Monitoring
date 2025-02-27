@@ -1,12 +1,11 @@
-# main.py (Updated with Employee IDs and Image Storage)
+# main.py (Updated with Robust Eye Closure Detection)
 import cv2
 import os
 import datetime
-import base64
 import asyncio
 import sys
 from threading import Thread
-from fastapi import FastAPI, BackgroundTasks, HTTPException, Request, WebSocket
+from fastapi import FastAPI, BackgroundTasks, HTTPException, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -28,8 +27,8 @@ cap = None
 monitoring_thread = None
 is_monitoring = False
 debug_mode = False
-frame_log_interval = 5
-SHUTDOWN_SECRET = "bhupen"  # Consider moving to config/env vars
+frame_log_interval = 60  # Increased to 60 seconds
+SHUTDOWN_SECRET = "bhupen"  # Move to env vars in production
 
 employee_dao = EmployeeDAO()
 
@@ -37,19 +36,6 @@ employee_dao = EmployeeDAO()
 class KnownFace(BaseModel):
     name: str
     path: str
-
-
-def setup_employee(known_faces):
-    """
-    Initialize employees in the database with their face images.
-    Returns a mapping of names to employee IDs.
-    """
-    employee_map = {}
-    for face in known_faces:
-        employee_id = employee_dao.add_employee(face.name, face_image_path=face.path)
-        if employee_id:
-            employee_map[face.name] = employee_id
-    return employee_map
 
 
 def log_productivity_to_db(employee_id, entries):
@@ -67,22 +53,28 @@ def log_frame(frame, employee_id, timestamp):
     frame_filename = os.path.join(
         frame_dir, f"emp_{employee_id}_{timestamp.strftime('%Y%m%d_%H%M%S')}.jpg"
     )
-    cv2.imwrite(frame_filename, frame)
     success = employee_dao.log_frame(employee_id, frame_filename, timestamp)
-    if not success:
+    if success:
+        cv2.imwrite(frame_filename, frame)  # Save only if DB succeeds
+        return frame_filename
+    else:
         print(f"Failed to log frame for employee {employee_id}")
-    return frame_filename
+        return None
 
 
 def monitoring_loop(employee_id):
     global tracker_instance, cap, is_monitoring, debug_mode, frame_log_interval
     frame_count = 0
     PROCESS_EVERY_NTH_FRAME = 4
-    last_frame_log_time = datetime.datetime.now() - datetime.timedelta(
-        seconds=frame_log_interval + 1
-    )
+    start_time = datetime.datetime.now()
+    timeout_minutes = 10  # Stop after 10 minutes
 
-    while is_monitoring and cap and cap.isOpened():
+    while (
+        is_monitoring
+        and cap
+        and cap.isOpened()
+        and (datetime.datetime.now() - start_time).seconds < timeout_minutes * 60
+    ):
         ret, frame = cap.read()
         if not ret:
             print("Error: Failed to capture frame in monitoring loop")
@@ -101,27 +93,26 @@ def monitoring_loop(employee_id):
             if eye_state is None:
                 if "no_face_start" not in locals():
                     no_face_start = current_time
-                elif (current_time - no_face_start).seconds >= 2:
-                    print("No face detected for 2 seconds. Stopping monitoring...")
+                elif (current_time - no_face_start).seconds >= 5:
+                    print("No face detected for 5 seconds. Stopping monitoring...")
                     is_monitoring = False
                     break
             else:
                 if "no_face_start" in locals():
                     del no_face_start
 
-            if (
-                stats["pending_logs"]
-                or (current_time - last_frame_log_time).seconds >= frame_log_interval
-            ):
-                frame_filename = log_frame(frame, employee_id, current_time)
-                last_frame_log_time = current_time
-
+            # Log only significant eye closure events
             if stats["pending_logs"]:
-                Thread(
-                    target=log_productivity_to_db,
-                    args=(employee_id, stats["pending_logs"]),
-                ).start()
-                tracker_instance.clear_log_buffer()
+                frame_filename = log_frame(frame, employee_id, current_time)
+                if frame_filename:
+                    Thread(
+                        target=log_productivity_to_db,
+                        args=(employee_id, stats["pending_logs"]),
+                    ).start()
+                    tracker_instance.clear_log_buffer()
+
+    print("Monitoring stopped")
+    is_monitoring = False
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -130,17 +121,14 @@ async def read_root(request: Request):
 
 
 @app.post("/initialize")
-async def initialize(known_faces: list[KnownFace]):
+async def initialize():
     global recognizer_instance, cap
     if cap is not None and cap.isOpened():
         cap.release()
     if recognizer_instance is not None:
         recognizer_instance = None
 
-    known_faces_list = [(face.name, face.path) for face in known_faces]
-    employee_map = setup_employee(known_faces)  # Store employees in DB
-    recognizer_instance = ProductivityRecognizer(known_faces_list)
-    recognizer_instance.employee_map = employee_map  # Add mapping to recognizer
+    recognizer_instance = ProductivityRecognizer()
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         raise HTTPException(status_code=500, detail="Could not open webcam.")
@@ -173,7 +161,7 @@ async def recognize_user(background_tasks: BackgroundTasks):
         if frame_count % frame_skip == 0:
             if recognizer_instance.recognize_user(frame):
                 user_name = recognizer_instance.get_identity()
-                employee_id = recognizer_instance.get_employee_id()  # Use new method
+                employee_id = recognizer_instance.get_employee_id()
                 if employee_id is None:
                     raise HTTPException(status_code=500, detail="Employee ID not found")
                 tracker_instance = ProductivityEyeTracker()
@@ -262,37 +250,5 @@ async def shutdown(request: ShutdownRequest):
     return {"message": "Server is shutting down"}
 
 
-@app.websocket("/video")
-async def video_feed(websocket: WebSocket):
-    global cap, debug_mode, tracker_instance
-    await websocket.accept()
-    try:
-        while cap and cap.isOpened() and debug_mode:
-            ret, frame = cap.read()
-            if not ret:
-                print("WebSocket: Failed to capture frame")
-                break
-            print("WebSocket: Sending frame")
-            if tracker_instance and tracker_instance.current_state:
-                cv2.putText(
-                    frame,
-                    f"State: {tracker_instance.current_state}",
-                    (10, 30),
-                    cv2.FONT_HERSHEY_SIMPLEX,
-                    1,
-                    (0, 255, 0),
-                    2,
-                )
-            _, buffer = cv2.imencode(".jpg", frame)
-            frame_base64 = base64.b64encode(buffer).decode("utf-8")
-            await websocket.send_text(frame_base64)
-            await asyncio.sleep(0.033)
-    except Exception as e:
-        print(f"WebSocket error: {e}")
-    finally:
-        await websocket.close()
-
-
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
-

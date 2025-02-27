@@ -1,3 +1,4 @@
+# face_recognition/detection.py (Adjusted for Your Eye Range)
 import cv2
 import numpy as np
 from scipy.signal import savgol_filter
@@ -7,7 +8,6 @@ import datetime
 import logging
 
 logging.getLogger("mediapipe").setLevel(logging.ERROR)
-
 
 class ProductivityEyeTracker:
     def __init__(self):
@@ -20,17 +20,18 @@ class ProductivityEyeTracker:
         )
         self.LEFT_EYE = [362, 385, 387, 263, 373, 380]
         self.RIGHT_EYE = [33, 160, 158, 133, 153, 144]
-        self.current_state = None
-        self.last_state_change = None
-        self.state_start_time = None
+        self.current_state = "open"
+        self.state_start_time = datetime.datetime.now()
+        self.closed_duration_threshold = 2.0
+        self.min_closed_frames = 30
+        self.closed_frame_count = 0
         self.total_closed_time = 0.0
-        self.state_history = deque(maxlen=5)
-        self.ear_threshold = 0.3
         self.log_buffer = []
+        self.ear_threshold = 0.23  # Adjusted to 0.23
+        self.state_history = deque(maxlen=20)
 
     def calculate_ear(self, landmarks):
         try:
-
             def eye_aspect_ratio(eye_indices):
                 coords = [(landmarks[i].x, landmarks[i].y) for i in eye_indices]
                 vertical1 = np.linalg.norm(np.subtract(coords[1], coords[5]))
@@ -38,41 +39,81 @@ class ProductivityEyeTracker:
                 horizontal = np.linalg.norm(np.subtract(coords[0], coords[3]))
                 return (vertical1 + vertical2) / (2.0 * horizontal + 1e-6)
 
-            return (
-                eye_aspect_ratio(self.LEFT_EYE) + eye_aspect_ratio(self.RIGHT_EYE)
-            ) / 2
+            ear = (eye_aspect_ratio(self.LEFT_EYE) + eye_aspect_ratio(self.RIGHT_EYE)) / 2
+            return ear
         except Exception as e:
             print(f"EAR calculation error: {str(e)}")
             return None
 
     def process_frame(self, frame):
         results = self.mp_face_mesh.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+        current_time = datetime.datetime.now()
+
         if not results.multi_face_landmarks:
+            if self.current_state == "closed" and self.closed_frame_count >= self.min_closed_frames:
+                duration = (current_time - self.state_start_time).total_seconds()
+                if duration >= self.closed_duration_threshold:
+                    self.log_buffer.append({
+                        "start": self.state_start_time,
+                        "end": current_time,
+                        "duration": duration
+                    })
+                    self.total_closed_time += duration
+                    self.closed_frame_count = 0  # Reset only after logging
+            self.current_state = None
+            self.state_history.clear()
+            print(f"No face detected at {current_time}")
             return None
+
         landmarks = results.multi_face_landmarks[0].landmark
         ear = self.calculate_ear(landmarks)
         if ear is None:
+            self.current_state = None
+            self.closed_frame_count = 0
+            self.state_history.clear()
+            print(f"EAR is None at {current_time}")
             return None
-        new_state = "open" if ear > self.ear_threshold else "closed"
+
         self.state_history.append(ear)
-        if len(self.state_history) >= 5:
-            smoothed_ear = savgol_filter(self.state_history, 5, 2)[-1]
+        print(f"EAR: {ear:.3f}, History length: {len(self.state_history)}")
+
+        if len(self.state_history) >= 15:  # Start at 15 frames
+            smoothed_ear = savgol_filter(self.state_history, 15, 2)[-1]  # Window 15
             new_state = "open" if smoothed_ear > self.ear_threshold else "closed"
-        if new_state != self.current_state:
-            now = datetime.datetime.now()
-            if self.current_state == "closed":
-                closed_duration = (now - self.state_start_time).total_seconds()
-                self.total_closed_time += closed_duration
-                self.log_buffer.append(
-                    {
-                        "start": self.state_start_time,
-                        "end": now,
-                        "duration": closed_duration,
-                    }
-                )
-            self.current_state = new_state
-            self.state_start_time = now
-            self.last_state_change = now
+            print(f"Smoothed EAR: {smoothed_ear:.3f}, New state: {new_state}")
+
+            if new_state == "closed":
+                self.closed_frame_count += 1
+                if self.current_state != "closed":
+                    self.current_state = "closed"
+                    self.state_start_time = current_time
+                elif self.closed_frame_count >= self.min_closed_frames:
+                    duration = (current_time - self.state_start_time).total_seconds()
+                    if duration >= self.closed_duration_threshold:
+                        self.log_buffer.append({
+                            "start": self.state_start_time,
+                            "end": current_time,
+                            "duration": duration
+                        })
+                        self.total_closed_time += duration
+                        self.state_start_time = current_time
+                        self.closed_frame_count = 0  # Reset only after logging
+            else:
+                if self.current_state == "closed" and self.closed_frame_count >= self.min_closed_frames:
+                    duration = (current_time - self.state_start_time).total_seconds()
+                    if duration >= self.closed_duration_threshold:
+                        self.log_buffer.append({
+                            "start": self.state_start_time,
+                            "end": current_time,
+                            "duration": duration
+                        })
+                        self.total_closed_time += duration
+                        self.closed_frame_count = 0  # Reset only after logging
+                self.current_state = "open"
+                self.state_start_time = current_time if self.current_state != "open" else self.state_start_time
+        else:
+            self.current_state = "open"
+
         return self.current_state
 
     def get_productivity_stats(self):
@@ -85,4 +126,3 @@ class ProductivityEyeTracker:
 
     def clear_log_buffer(self):
         self.log_buffer.clear()
-
