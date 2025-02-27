@@ -1,2 +1,4 @@
 .env
 .env
+app/config.py
+app/__pycache__/
