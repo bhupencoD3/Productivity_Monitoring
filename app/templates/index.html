@@ -1,4 +1,4 @@
-<!-- templates/index.html -->
+<!-- app/templates/index.html -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,13 +11,12 @@
     />
     <style>
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Segoe UI", sans-serif;
         background-color: #f4f7fa;
-        margin: 0;
         padding: 20px;
       }
       .container {
-        max-width: 900px;
+        max-width: 1200px;
         margin: 0 auto;
         background: #fff;
         padding: 20px;
@@ -27,7 +26,6 @@
       h1 {
         color: #2c3e50;
         text-align: center;
-        margin-bottom: 20px;
       }
       .controls {
         display: flex;
@@ -44,7 +42,6 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        transition: background-color 0.3s;
       }
       button:hover {
         background-color: #2980b9;
@@ -55,24 +52,12 @@
       #shutdownBtn:hover {
         background-color: #c0392b;
       }
-      #videoFeed {
-        display: none;
-        max-width: 100%;
-        border-radius: 5px;
-        margin: 20px auto;
-        border: 2px solid #ddd;
-      }
-      #videoFeed.active {
-        display: block;
-      }
       #status {
         background-color: #ecf0f1;
         padding: 15px;
         border-radius: 5px;
         white-space: pre-wrap;
         font-size: 14px;
-        color: #34495e;
-        margin-top: 20px;
       }
       .stats-container {
         margin-top: 20px;
@@ -80,12 +65,10 @@
       .stats-table {
         width: 100%;
         border-collapse: collapse;
-        margin-top: 10px;
       }
       .stats-table th,
       .stats-table td {
         padding: 10px;
-        text-align: left;
         border-bottom: 1px solid #ddd;
       }
       .stats-table th {
@@ -110,6 +93,11 @@
           transform: rotate(360deg);
         }
       }
+      .chart-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 20px auto;
+      }
     </style>
   </head>
   <body>
@@ -124,7 +112,6 @@
         <button id="shutdownBtn" onclick="shutdown()">Shutdown</button>
       </div>
       <div class="spinner" id="spinner"></div>
-      <img id="videoFeed" src="" alt="Video Feed Unavailable" />
       <div id="status">Status: Not initialized</div>
       <div class="stats-container" id="stats-container" style="display: none">
         <h3>Monitoring Stats</h3>
@@ -137,8 +124,18 @@
           </thead>
           <tbody id="stats-table-body"></tbody>
         </table>
+        <div class="chart-container">
+          <canvas id="productivityChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="closureTimelineChart"></canvas>
+        </div>
+        <div class="chart-container">
+          <canvas id="dailyClosureChart"></canvas>
+        </div>
       </div>
     </div>
+    <script src="/static/chart.js"></script>
     <script src="/static/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>

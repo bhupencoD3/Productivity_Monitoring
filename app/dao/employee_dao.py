@@ -1,6 +1,6 @@
 # app/dao/employee_dao.py (Updated with get_all_employees)
 import mysql.connector
-from utils.db_connection import (
+from app.utils.db_connection import (
     get_db_connection,
     close_db_connection,
 )  # Adjusted import path

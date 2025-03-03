@@ -3,7 +3,7 @@ import numpy as np
 import torch
 import datetime
 from facenet_pytorch import InceptionResnetV1, MTCNN
-from dao.employee_dao import EmployeeDAO
+from app.dao.employee_dao import EmployeeDAO
 
 
 class ProductivityRecognizer:

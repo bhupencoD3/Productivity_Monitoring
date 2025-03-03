@@ -1,4 +1,4 @@
-// Configuration
+// app/static/script.js
 const API_ENDPOINTS = {
   INITIALIZE: "/initialize",
   RECOGNIZE: "/recognize",
@@ -9,8 +9,10 @@ const API_ENDPOINTS = {
 };
 
 let statsInterval = null;
+let productivityChart = null;
+let closureTimelineChart = null;
+let dailyClosureChart = null;
 
-// Utility Functions
 function showSpinner(show) {
   document.getElementById("spinner").style.display = show ? "block" : "none";
 }
@@ -28,13 +30,129 @@ function updateStatsTable(stats) {
       ?.map((log) => `${log.start} - ${log.end} (${log.duration}s)`)
       .join("<br>") || "No logs yet";
 
+  let presenceStatus = "Absent";
+  if (stats.current_state === "open" || stats.current_state === "closed") {
+    presenceStatus = "Present";
+  }
+
   tbody.innerHTML = `
     <tr><td>User State</td><td>${stats.current_state || "N/A"}</td></tr>
+    <tr><td>Presence</td><td>${presenceStatus}</td></tr>
     <tr><td>Total Closed Time</td><td>${totalClosedTime}s</td></tr>
     <tr><td>State Since</td><td>${stateSince}</td></tr>
     <tr><td>Recent Logs</td><td>${recentLogs}</td></tr>
   `;
+  if (stats.productivity_data) {
+    tbody.innerHTML += `
+      <tr><td>Total Session Time</td><td>${stats.productivity_data.total_session_time.toFixed(1)}s</td></tr>
+      <tr><td>Productivity Score</td><td>${stats.productivity_data.productivity_score.toFixed(1)}%</td></tr>
+    `;
+    updateProductivityChart(stats.productivity_data);
+    updateClosureTimeline(stats.productivity_data);
+    updateDailyClosureChart(stats.productivity_data);
+  }
   document.getElementById("stats-container").style.display = "block";
+}
+
+function updateProductivityChart(data) {
+  const ctx = document.getElementById("productivityChart").getContext("2d");
+  if (productivityChart) {
+    productivityChart.destroy();
+  }
+  productivityChart = new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: ["Productive", "Closed"],
+      datasets: [
+        {
+          data: [data.productivity_score, 100 - data.productivity_score],
+          backgroundColor: ["#36A2EB", "#FF6384"],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        title: { display: true, text: `${data.name}'s Productivity` },
+      },
+    },
+  });
+}
+
+function updateClosureTimeline(data) {
+  const ctx = document.getElementById("closureTimelineChart").getContext("2d");
+  if (closureTimelineChart) {
+    closureTimelineChart.destroy();
+  }
+  closureTimelineChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: data.closure_events.map((event) =>
+        event.start.split("T")[1].substring(0, 8),
+      ),
+      datasets: [
+        {
+          label: "Closure Duration (s)",
+          data: data.closure_events.map((event) => event.duration),
+          borderColor: "#FF6384",
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        title: { display: true, text: "Closure Events Over Time" },
+      },
+      scales: {
+        x: { title: { display: true, text: "Time" } },
+        y: { title: { display: true, text: "Duration (s)" } },
+      },
+    },
+  });
+}
+
+function updateDailyClosureChart(data) {
+  const ctx = document.getElementById("dailyClosureChart").getContext("2d");
+  if (dailyClosureChart) {
+    dailyClosureChart.destroy();
+  }
+
+  const hourlyClosures = {};
+  data.closure_events.forEach((event) => {
+    const hour = event.start.split("T")[1].substring(0, 2);
+    hourlyClosures[hour] = (hourlyClosures[hour] || 0) + event.duration;
+  });
+
+  const labels = Object.keys(hourlyClosures).sort();
+  const durations = labels.map((hour) => hourlyClosures[hour]);
+
+  dailyClosureChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Total Closure Time (s)",
+          data: durations,
+          backgroundColor: "#36A2EB",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: "top" },
+        title: { display: true, text: "Hourly Closure Totals" },
+      },
+      scales: {
+        x: { title: { display: true, text: "Hour" } },
+        y: { title: { display: true, text: "Total Closed Time (s)" } },
+      },
+    },
+  });
 }
 
 async function fetchWithSpinner(url, options = {}) {
@@ -53,7 +171,6 @@ async function fetchWithSpinner(url, options = {}) {
   }
 }
 
-// Main Functions
 async function initialize() {
   try {
     const result = await fetchWithSpinner(API_ENDPOINTS.INITIALIZE, {
@@ -66,25 +183,17 @@ async function initialize() {
 }
 
 async function startRecognition() {
-  showSpinner(true);
   try {
-    const response = await fetch(API_ENDPOINTS.RECOGNIZE);
-    const result = await response.json();
-    console.log("Recognition result:", result); // Debug
-    if (response.ok) {
-      updateStatus(
-        `Status: ${result.message}\nUser: ${result.name || "Unknown"} (ID: ${result.employee_id || "N/A"})`,
-      );
-      startStatsUpdates();
-    } else {
-      updateStatus(`Status: ${result.detail || "Recognition failed"}`);
-    }
+    const result = await fetchWithSpinner(API_ENDPOINTS.RECOGNIZE);
+    updateStatus(
+      `Status: ${result.message}\nUser: ${result.name || "Unknown"} (ID: ${result.employee_id || "N/A"})`,
+    );
+    startStatsUpdates();
   } catch (error) {
-    updateStatus(`Error: ${error.message}`);
-  } finally {
-    showSpinner(false);
+    console.error("Recognition failed:", error);
   }
 }
+
 async function getStats() {
   try {
     const stats = await fetchWithSpinner(API_ENDPOINTS.STATS);
@@ -129,7 +238,6 @@ async function shutdown() {
     updateStatus("Shutdown canceled: No secret key provided");
     return;
   }
-
   try {
     const result = await fetchWithSpinner(API_ENDPOINTS.SHUTDOWN, {
       method: "POST",

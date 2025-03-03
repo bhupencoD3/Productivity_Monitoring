@@ -1,6 +1,6 @@
 # app/utils/db_connection.py
 import mysql.connector
-from config import DB_CONFIG
+from app.config import DB_CONFIG
 
 
 def get_db_connection():

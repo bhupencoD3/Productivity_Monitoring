@@ -1,4 +1,4 @@
-# face_recognition/detection.py (Adjusted for Your Eye Range)
+# face_recognition/detection.py
 import cv2
 import numpy as np
 from scipy.signal import savgol_filter
@@ -27,7 +27,7 @@ class ProductivityEyeTracker:
         self.closed_frame_count = 0
         self.total_closed_time = 0.0
         self.log_buffer = []
-        self.ear_threshold = 0.23  # Adjusted to 0.23
+        self.ear_threshold = 0.23
         self.state_history = deque(maxlen=20)
 
     def calculate_ear(self, landmarks):
@@ -59,7 +59,7 @@ class ProductivityEyeTracker:
                         "duration": duration
                     })
                     self.total_closed_time += duration
-                    self.closed_frame_count = 0  # Reset only after logging
+                    self.closed_frame_count = 0
             self.current_state = None
             self.state_history.clear()
             print(f"No face detected at {current_time}")
@@ -77,8 +77,8 @@ class ProductivityEyeTracker:
         self.state_history.append(ear)
         print(f"EAR: {ear:.3f}, History length: {len(self.state_history)}")
 
-        if len(self.state_history) >= 15:  # Start at 15 frames
-            smoothed_ear = savgol_filter(self.state_history, 15, 2)[-1]  # Window 15
+        if len(self.state_history) >= 15:
+            smoothed_ear = savgol_filter(self.state_history, 15, 2)[-1]
             new_state = "open" if smoothed_ear > self.ear_threshold else "closed"
             print(f"Smoothed EAR: {smoothed_ear:.3f}, New state: {new_state}")
 
@@ -97,7 +97,7 @@ class ProductivityEyeTracker:
                         })
                         self.total_closed_time += duration
                         self.state_start_time = current_time
-                        self.closed_frame_count = 0  # Reset only after logging
+                        self.closed_frame_count = 0
             else:
                 if self.current_state == "closed" and self.closed_frame_count >= self.min_closed_frames:
                     duration = (current_time - self.state_start_time).total_seconds()
@@ -108,7 +108,7 @@ class ProductivityEyeTracker:
                             "duration": duration
                         })
                         self.total_closed_time += duration
-                        self.closed_frame_count = 0  # Reset only after logging
+                        self.closed_frame_count = 0
                 self.current_state = "open"
                 self.state_start_time = current_time if self.current_state != "open" else self.state_start_time
         else:
