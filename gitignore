@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+##secrets##
+app/ca.pem
+app/config.py
+ app/__pycache__/config.cpython-311.pyc:4
 # Distribution / packaging
 .Python
 build/
@@ -25,7 +29,13 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
+# .gitignore
+app/.env
+app/__pycache__/
+app/*/__pycache__/
+app/logs/
+detected_face_*.jpg
+frame_logs/
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
