@@ -15,27 +15,31 @@ A real-time productivity tracking system using facial recognition and eye tracki
 
 ## Project Structure
 
+```
 Productivity-Monitoring/
 ├── app/
-│ ├── config.py # Loads environment variables
-│ ├── dao/ # Data access objects
-│ │ └── employee*dao.py # MySQL interaction
-│ ├── face_recognition/ # Core recognition and tracking
-│ │ ├── detection.py # Eye tracking logic
-│ │ └── recognition.py # Face recognition logic
-│ ├── main.py # FastAPI application
-│ ├── static/ # Frontend static files
-│ │ ├── chart.js # Chart.js library
-│ │ └── script.js # Chart rendering and API calls
-│ ├── templates/ # HTML templates
-│ │ └── index.html # Main UI with chart canvases
-│ ├── utils/ # Utility functions
-│ │ └── db_connection.py # MySQL connection helper
-│ └── .env # Environment variables (not tracked)
-├── frame_logs/ # Output frames (not tracked)
-├── detected_face*\*.jpg # Detected face images (not tracked)
-├── requirements.txt # Python dependencies
-└── README.md # This file
+│   ├── config.py                # Loads environment variables
+│   ├── dao/                     # Data access objects
+│   │   └── employee_dao.py       # MySQL interaction
+│   ├── face_recognition/         # Core recognition and tracking
+│   │   ├── detection.py          # Eye tracking logic
+│   │   └── recognition.py        # Face recognition logic
+│   ├── main.py                   # FastAPI application
+│   ├── static/                   # Frontend static files
+│   │   ├── chart.js              # Chart.js library
+│   │   └── script.js             # Chart rendering and API calls
+│   ├── templates/                # HTML templates
+│   │   └── index.html            # Main UI with chart canvases
+│   ├── utils/                    # Utility functions
+│   │   └── db_connection.py      # MySQL connection helper
+│   └── .env                      # Environment variables (not tracked)
+├── frame_logs/                    # Output frames (not tracked)
+├── detected_faces/                # Detected face images (not tracked)
+├── requirements.txt               # Python dependencies
+└── README.md                      # This file
+```
+
+```
 
 ## Prerequisites
 
@@ -50,21 +54,21 @@ Productivity-Monitoring/
    git clone <https://github.com/yourusername/Productivity-Monitoring.git>
    cd Productivity-Monitoring
 
-   ```
+```
 
-   ```
+````
 
 pip install -r requirements.txt ```
 
 ```Configure Environment:
 
-   Create app/.env:
+Create app/.env:
 DB_HOST=localhost
 DB_PORT=3306
 DB_USER=your_username
 DB_PASSWORD=your_password
 DB_NAME=productivity_db
-```
+````
 
 Set Up MySQL:
 sql
@@ -98,7 +102,7 @@ Usage
 
 ![Productivity Dashboard](screenshots/Productivity_dashbord.jpg)
 ![Productivity Dashboard](/screenshots/Productivity_dashbord2.jpg)
-*Pie chart, line chart, and bar chart showing productivity metrics.*
+_Pie chart, line chart, and bar chart showing productivity metrics._
 
 ### Charts and Graphs
 
